@@ -1,6 +1,8 @@
+// make sure it only runs once
 if (typeof executed === 'undefined') {
     executed = true;
 
+    // for permanent or temporary redirecting
     var redirectSwitcher = false;
 
     var container = document.createElement('div');
@@ -219,6 +221,7 @@ if (typeof executed === 'undefined') {
         button2.style.backgroundColor = '#333';
     });
 
+    // the entirety of the custom javascript execution is built when the button is clicked
     button2.addEventListener('click', function() {
         var backgroundDiv = document.createElement('div');
         backgroundDiv.style.position = 'fixed';
@@ -269,21 +272,24 @@ if (typeof executed === 'undefined') {
         }
         
         largeTextBox.addEventListener('input', saveState);
-        
+
+        // added undoing
         function undo() {
             if (historyIndex > 0) {
                 historyIndex--;
                 largeTextBox.value = history[historyIndex];
             }
         }
-        
+
+        // and redoing
         function redo() {
             if (historyIndex < history.length - 1) {
                 historyIndex++;
                 largeTextBox.value = history[historyIndex];
             }
         }
-        
+
+        // also added tab spacing for whatever reason
         largeTextBox.addEventListener('keydown', function(e) {
             if (e.ctrlKey && e.key === 'z') {
                 e.preventDefault();
@@ -340,7 +346,8 @@ if (typeof executed === 'undefined') {
         executeButton.addEventListener('mouseout', function() {
             executeButton.style.backgroundColor = '#333';
         });
-    
+
+        // the actual execution of the javascript
         executeButton.addEventListener('click', function() {
             var jsCode = largeTextBox.value;
     
