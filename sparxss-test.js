@@ -359,8 +359,6 @@ if (typeof executed === 'undefined') {
             }
         });        
 
-        document.body.appendChild(largeTextBox);                                   
-
         var buttonContainer = document.createElement('div');
         buttonContainer.style.display = 'flex';
         buttonContainer.style.justifyContent = 'space-between';
@@ -472,45 +470,6 @@ if (typeof executed === 'undefined') {
             textBox1.placeholder = "Permanent Redirect";
         }
     });
-
-    
-    invis2.appendChild(textBox1);
-    invis2.appendChild(button1);
-    button1.insertAdjacentElement('afterend', button2);
-
-    container.appendChild(button3);
-    container.appendChild(sparxsstext);
-    container.appendChild(invis2);
-    container.appendChild(modeButton);
-
-    document.body.appendChild(container);
-    document.body.appendChild(invis);
-
-    invis.appendChild(toggler);
-
-    var redirectSwitcher = false;
-
-    function tempRedirector() {
-        var setUrl = textBox1.value;
-        if (setUrl.trim() !== "") {
-            if (!setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
-                setUrl = "https://" + setUrl;
-            }
-            window.open(url, '_blank');
-        }
-    }
-
-    function permRedirector() {
-        var setUrl = textBox1.value;
-        if (setUrl.trim() !== "") {
-            if (!setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
-                setUrl = "https://" + setUrl;
-            }
-            window.location.href = setUrl;
-        }
-    }
-
-
 
     var backgroundDiv2 = document.createElement('div');
     backgroundDiv2.style.position = 'fixed';
@@ -685,8 +644,9 @@ if (typeof executed === 'undefined') {
 
         bottomButton.addEventListener('click', function() {
             if (textBox.value.trim() !== '' && textBox.value.includes('.')) { 
+                userURL = textBox.value
                 backgroundDiv3.style.display = 'none';
-                checkpoint2();
+                checkpoint2(userURL);
             } else {
                 bottomButton.innerText = 'Please enter a valid URL';
                 setTimeout(function() {
@@ -703,7 +663,9 @@ if (typeof executed === 'undefined') {
         document.body.appendChild(backgroundDiv3);
     }
 
-    function checkpoint2() {
+    var linkCounter = 1; 
+
+    function checkpoint2(userURL) {
         var link = document.createElement('button');
         link.style.width = '25%';
         link.style.height = '225px';
@@ -718,31 +680,30 @@ if (typeof executed === 'undefined') {
         link.style.transition = 'background-color 0.3s ease';
         link.style.margin = '10px';
         link.style.textAlign = 'center';
-
+    
         link.addEventListener('mouseover', function() {
             link.style.backgroundColor = '#444';
         });
-
+    
         link.addEventListener('mouseout', function() {
             link.style.backgroundColor = '#333';
         });
-
+    
         link.addEventListener('click', function() {
             if (redirectSwitcher === false) {
-                window.open(url, '_blank')
+                window.open('https://' + userURL, '_blank');
             } else {
-                window.location.href = url;
+                window.location.href = 'https://' + userURL;
             }
         });
-
+    
         linkContainer.appendChild(link);
-
-        url = 'https://' + textBox.value;
-        const websiteURL = url;
-
+    
+        const websiteURL = 'https://' + userURL;
+    
         function fetchFaviconAndDisplay() {
-            var faviconURL = ''; 
-        
+            var faviconURL = '';
+    
             fetch(websiteURL)
                 .then(function(response) {
                     return response.text();
@@ -757,19 +718,18 @@ if (typeof executed === 'undefined') {
                             faviconURL = websiteURL + '/' + faviconURL;
                         }
                     } else {
-                        faviconURL = 'https://www.iconsdb.com/icons/preview/black/globe-2-xxl.png'; 
+                        var faviconURL = 'https://www.google.com/s2/favicons?domain=' + userURL;
                     }
-        
+    
                     var imgDiv = document.createElement('img');
-                    imgDiv.id = 'faviconImage'; 
                     imgDiv.style.width = '150px';
                     imgDiv.style.height = '150px';
                     imgDiv.style.textAlign = 'center';
-                    imgDiv.src = faviconURL; 
-                    link.appendChild(imgDiv); 
-
+                    imgDiv.src = faviconURL;
+                    link.appendChild(imgDiv);
+    
                     var linkText = document.createElement('div');
-                    linkText.innerText = textBox.value; 
+                    linkText.innerText = userURL;
                     linkText.style.marginTop = '10px';
                     linkText.style.textAlign = 'center';
                     link.appendChild(linkText);
@@ -778,17 +738,52 @@ if (typeof executed === 'undefined') {
                     console.error('Error:', error);
                 });
         }
-        
-        fetchFaviconAndDisplay(); 
+        fetchFaviconAndDisplay();
     }
 
     otherButton.addEventListener('click', checkpoint1);
+
+    invis.appendChild(toggler);
+    invis2.appendChild(textBox1);
+    invis2.appendChild(button1);
+    button1.insertAdjacentElement('afterend', button2);
+
+    container.appendChild(button3);
+    container.appendChild(sparxsstext);
+    container.appendChild(invis2);
+    container.appendChild(modeButton);
+
+    document.body.appendChild(container);
+    document.body.appendChild(invis);
+    document.body.appendChild(largeTextBox);
 
     contentContainer.appendChild(linkContainer);
     contentContainer.appendChild(otherButton)
     contentContainer.appendChild(closeButton);
     backgroundDiv2.appendChild(contentContainer);
     document.body.appendChild(backgroundDiv2);
+
+    var redirectSwitcher = false;
+
+    function tempRedirector() {
+        var setUrl = textBox1.value;
+        if (setUrl.trim() !== "") {
+            if (!setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
+                setUrl = "https://" + setUrl;
+            }
+            window.open(url, '_blank');
+        }
+    }
+
+    function permRedirector() {
+        var setUrl = textBox1.value;
+        if (setUrl.trim() !== "") {
+            if (!setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
+                setUrl = "https://" + setUrl;
+            }
+            window.location.href = setUrl;
+        }
+    }
 
     backgroundDiv2.style.display = 'none';
 }
