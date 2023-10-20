@@ -296,6 +296,7 @@ if (typeof executed === 'undefined') {
         largeTextBox.style.resize = 'none';
         largeTextBox.style.outline = 'none';
         largeTextBox.setAttribute('spellcheck', 'false');
+        document.body.appendChild(largeTextBox);
 
         var history = [''];
         var historyIndex = 0;
@@ -755,7 +756,6 @@ if (typeof executed === 'undefined') {
 
     document.body.appendChild(container);
     document.body.appendChild(invis);
-    document.body.appendChild(largeTextBox);
 
     contentContainer.appendChild(linkContainer);
     contentContainer.appendChild(otherButton)
