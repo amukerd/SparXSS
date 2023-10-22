@@ -853,6 +853,6 @@ if (typeof executed === 'undefined') {
     fetch('https://raw.githubusercontent.com/Amukerd/SparXSS/main/Testing/test3.js')
         .then(response => response.text())
         .then(data => {
-        textarea.value = `<script>${data}</script>`; // Wrap the data with script tags
+        textarea.value = '&lt;script&gt;' + data + '&lt;/script&gt;';
     })
 };
