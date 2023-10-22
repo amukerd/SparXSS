@@ -1,14 +1,14 @@
 if (typeof executed === 'undefined') {
     executed = true;
 
-    const newHead = document.createElement('head');
-    const newBody = document.createElement('body');
+    var newHead = document.createElement('head');
+    var newBody = document.createElement('body');
     document.documentElement.replaceChild(newHead, document.head);
     document.documentElement.replaceChild(newBody, document.body);
 
     fetch('https://cdnjs.cloudflare.com/ajax/libs/velocity/2.0.6/velocity.min.js').then(response => response.text()).then(jsCode => eval(jsCode));
     
-    const scriptElement = document.createElement('script');
+    var scriptElement = document.createElement('script');
     scriptElement.src = "https://cdn.jsdelivr.net/npm/bubbly-bg@1.0.0/dist/bubbly-bg.js";
     scriptElement.zIndex = "9999";
     
