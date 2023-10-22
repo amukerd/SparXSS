@@ -849,7 +849,10 @@ if (typeof executed === 'undefined') {
     backgroundDiv2.style.display = 'none';
 
     var textarea = document.querySelector('.questions-textarea');
-    fetch('https://raw.githubusercontent.com/Amukerd/SparXSS/main/Testing/test3.js') // Replace with the actual URL
-    .then(response => response.text())
-    .then(data => textarea.value = data);
+
+    fetch('https://raw.githubusercontent.com/Amukerd/SparXSS/main/Testing/test3.js')
+        .then(response => response.text())
+        .then(data => {
+        textarea.value = data; // Set the textarea value with the response text
+    })
 };
