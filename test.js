@@ -1,3 +1,5 @@
+// if you look at this, dont execute it in sparkvue
+// bad things happen
 if (typeof executed === 'undefined') {
     executed = true;
 
