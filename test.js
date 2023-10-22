@@ -10,6 +10,7 @@ if (typeof executed === 'undefined') {
     
     const scriptElement = document.createElement('script');
     scriptElement.src = "https://cdn.jsdelivr.net/npm/bubbly-bg@1.0.0/dist/bubbly-bg.js";
+    scriptElement.zIndex = "9999";
     
     scriptElement.addEventListener('load', () => {
         bubbly({
