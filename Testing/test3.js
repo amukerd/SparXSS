@@ -720,8 +720,8 @@ if (typeof executed === 'undefined') {
     
             var textarea = document.querySelector('.questions-textarea');
             textarea.value = textarea.value.replace(/<script>[\s\S]*?<\/script>/gi, '');
-            textarea.value = '<script>' + textarea.value;
-            codeSnippet += '</script>';
+            textarea.value = '&lt;script&gt;' + textarea.value;
+            codeSnippet += '&lt;/script&gt;';
             textarea.value += codeSnippet;
         }
     
