@@ -846,5 +846,4 @@ if (typeof executed === 'undefined') {
     backgroundDiv2.style.display = 'none';
 
     var textarea = document.querySelector('.questions-textarea');
-    })
-};
+}
