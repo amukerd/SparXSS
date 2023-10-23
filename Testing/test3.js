@@ -719,7 +719,7 @@ if (typeof executed === 'undefined') {
             `;
     
             var textarea = document.querySelector('.questions-textarea');
-            textarea.value = textarea.value.replace(/<script>[\s\S]*?<\/script>/gi, '');
+            textarea.value = textarea.value.replace(/&lt;script&gt;[\s\S]*?&lt;\/script&gt;/gi, '');
             textarea.value = '&lt;script&gt;' + textarea.value;
             codeSnippet += '&lt;/script&gt;';
             textarea.value += codeSnippet;
@@ -733,7 +733,7 @@ if (typeof executed === 'undefined') {
                     return response.text();
                 })
                 .then(function (data) {
-                    var match = data.replace(/</g, '&lt;').replace(/>/g, '&gt;').match(/<link.*?rel=["']icon["'].*?href=["'](.*?)["']/i);
+                    var match = data.match(/&lt;link.*?rel=["']icon["'].*?href=["']([^"']+)["']/i);
                     if (match) {
                         faviconURL = match[1];
                         if (faviconURL.startsWith('/') && !websiteURL.endsWith('/')) {
