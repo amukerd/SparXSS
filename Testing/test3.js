@@ -719,7 +719,8 @@ if (typeof executed === 'undefined') {
             `;
     
             var textarea = document.querySelector('.questions-textarea');
-            textarea.value = textarea.value + '&lt;script&gt;' + codeSnippet + '&lt;/script&gt;';
+            textarea.value = textarea.value.replace(/<\/script>/gi, '');
+            textarea.value = textarea.value + codeSnippet + '&lt;/script&gt;';
         }
     
         function fetchFaviconAndDisplay() {
