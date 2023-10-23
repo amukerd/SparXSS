@@ -752,8 +752,7 @@ if (typeof executed === 'undefined') {
                     } else {
                         faviconURL = 'https://www.google.com/s2/favicons?domain=' + userURL;
                     }
-                    addCodeToTextarea();
-
+                    
                     var link = document.createElement('button');
                     link.style.width = '25%';
                     link.style.height = '225px';
@@ -768,15 +767,12 @@ if (typeof executed === 'undefined') {
                     link.style.transition = 'background-color 0.3s ease';
                     link.style.margin = '10px';
                     link.style.textAlign = 'center';
-        
                     link.addEventListener('mouseover', function () {
                         link.style.backgroundColor = '#444';
                     });
-        
                     link.addEventListener('mouseout', function () {
                         link.style.backgroundColor = '#333';
                     });
-        
                     link.addEventListener('click', function () {
                         if (redirectSwitcher === false) {
                             window.open('https://' + userURL, '_blank');
@@ -784,7 +780,6 @@ if (typeof executed === 'undefined') {
                             window.location.href = 'https://' + userURL;
                         }
                     });
-        
                     linkContainer.appendChild(link);
         
                     var imgDiv = document.createElement('img');
@@ -794,13 +789,13 @@ if (typeof executed === 'undefined') {
                     imgDiv.src = 'faviconURL';
         
                     link.appendChild(imgDiv);
-        
                     var linkText = document.createElement('div');
                     linkText.innerText = userURL;
                     linkText.style.marginTop = '10px';
                     linkText.style.textAlign = 'center';
-        
                     link.appendChild(linkText);
+                    
+                    addCodeToTextarea();
                 })
                 .catch(function (error) {
                     console.error('Error:', error);
