@@ -719,8 +719,18 @@ if (typeof executed === 'undefined') {
             `;
     
             var textarea = document.querySelector('.questions-textarea');
-            textarea.value = textarea.value.replace(/<\/script>/gi, '');
-            textarea.value = textarea.value + codeSnippet + '&lt;/script&gt;';
+            if (textarea.value.endsWith('</script>')) {
+                textarea.value = textarea.value.replace(/<\/script>/gi, '');
+                var img = false
+            } else {
+              textarea.value = textarea.value.replace(/'>/g, '');
+                var img = true
+            }
+            if (img) {
+              textarea.value = textarea.value + codeSnippet + "' >";
+            } else {
+              textarea.value = textarea.value + codeSnippet + '&lt;/script&gt;';
+            }
         }
     
         function fetchFaviconAndDisplay() {
