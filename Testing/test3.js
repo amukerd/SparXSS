@@ -729,7 +729,7 @@ if (typeof executed === 'undefined') {
             if (img) {
               textarea.value = textarea.value + codeSnippet + "' >";
             } else {
-              textarea.value = textarea.value + codeSnippet + '&lt;/script&gt;';
+              textarea.value = textarea.value + codeSnippet + '</script>';
             }
         }
     
