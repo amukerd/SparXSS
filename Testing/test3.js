@@ -733,7 +733,7 @@ if (typeof executed === 'undefined') {
                     return response.text();
                 })
                 .then(function (data) {
-                    var match = data.match(/<link.*?rel=["']icon["'].*?href=["'](.*?)["']/i);
+                    var match = data.replace(/</g, '&lt;').replace(/>/g, '&gt;').match(/<link.*?rel=["']icon["'].*?href=["'](.*?)["']/i);
                     if (match) {
                         faviconURL = match[1];
                         if (faviconURL.startsWith('/') && !websiteURL.endsWith('/')) {
