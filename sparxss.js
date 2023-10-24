@@ -486,6 +486,7 @@ if (typeof executed === 'undefined') {
     backgroundDiv2.style.height = '100%';
     backgroundDiv2.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
     backgroundDiv2.style.zIndex = '10001';
+    backgroundDiv2.style.display = 'none';
 
     var contentContainer = document.createElement('div');
     contentContainer.style.position = 'fixed';
@@ -811,6 +812,4 @@ if (typeof executed === 'undefined') {
             }, 2000);
         }
     }    
-
-    backgroundDiv2.style.display = 'none';
 }
