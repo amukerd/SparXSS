@@ -1,6 +1,10 @@
+// so it executes once
 if (typeof executed === 'undefined') {
     executed = true;
 
+    var redirectSwitcher = false; // im a retard
+
+    // eruda bc useful for debugging
     (function(){var script=document.createElement("script");
         script.src="https://cdn.jsdelivr.net/npm/eruda";
         document.body.append(script);
@@ -43,7 +47,8 @@ if (typeof executed === 'undefined') {
     toggler.style.color = '#aaa';
     toggler.style.cursor = 'pointer';
     toggler.style.outline = 'none';
-    
+
+    // yes you can drag the toggler
     var isOpen = true;
     var isDragging = false;
     var offsetX, offsetY;
@@ -259,6 +264,7 @@ if (typeof executed === 'undefined') {
         button3.style.backgroundColor = '#333';
     });
 
+    // yay javascript text box being built everytime it is clicked
     button3.addEventListener('click', function() {
         var backgroundDiv = document.createElement('div');
         backgroundDiv.style.position = 'fixed';
@@ -351,6 +357,7 @@ if (typeof executed === 'undefined') {
                     this.selectionEnd = end + spaces.length * lines.length;
                 }
                 saveState();
+            // added deleting a 4 space tab
             } else if (e.key === 'Backspace' && this.value.substring(this.selectionStart - 4, this.selectionStart) === '    ') {
                 e.preventDefault();
                 var start = this.selectionStart;
@@ -386,6 +393,7 @@ if (typeof executed === 'undefined') {
             executeButton.style.backgroundColor = '#333';
         });
 
+        // actual javascript execution
         executeButton.addEventListener('click', function() {
             var jsCode = largeTextBox.value;
 
@@ -554,7 +562,8 @@ if (typeof executed === 'undefined') {
     otherButton.addEventListener('mouseout', function() {
         otherButton.style.backgroundColor = '#333';
     });
-    
+
+    // have to define these outside the function so checkpoint2() can acess them
     var backgroundDiv3; 
     var textBox;
     var linkContainer;
@@ -701,7 +710,8 @@ if (typeof executed === 'undefined') {
         linkContainer.appendChild(link);
     
         const websiteURL = 'https://' + userURL;
-    
+
+        // get the favicon for each url
         function fetchFaviconAndDisplay() {
             var faviconURL = '';
     
@@ -763,7 +773,7 @@ if (typeof executed === 'undefined') {
     backgroundDiv2.appendChild(contentContainer);
     document.body.appendChild(backgroundDiv2);
 
-    var redirectSwitcher = false;
+    // var redirectSwitcher = false; forgot that this was (idfk searched for or something) earlier than it is defined so... readded it to the top of the script
 
     function tempRedirector() {
         var setUrl = textBox1.value;
