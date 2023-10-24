@@ -3,13 +3,11 @@ if (typeof executed === 'undefined') {
     executed = true;
 
     // eruda bc useful for debugging
-    (function() {
-        var script=document.createElement("script");
+    (function(){var script=document.createElement("script");
         script.src="https://cdn.jsdelivr.net/npm/eruda";
         document.body.append(script);
-        script.onload=function() {
-            eruda.init();
-        }
+        script.onload=function()
+            {eruda.init();}
     })
     ();
     
@@ -48,7 +46,7 @@ if (typeof executed === 'undefined') {
     toggler.style.cursor = 'pointer';
     toggler.style.outline = 'none';
 
-    // yes you can drag the open/close button
+    // yes you can drag the toggler
     var isOpen = true;
     var isDragging = false;
     var offsetX, offsetY;
@@ -396,10 +394,12 @@ if (typeof executed === 'undefined') {
         // actual javascript execution
         executeButton.addEventListener('click', function() {
             var jsCode = largeTextBox.value;
+
             try {
                 eval(jsCode);
             } catch (error) {
                 executeButton.innerText = 'Error: Execution Failed';
+
                 setTimeout(function() {
                     executeButton.innerText = 'Execute';
                 }, 2000);
@@ -562,11 +562,8 @@ if (typeof executed === 'undefined') {
         otherButton.style.backgroundColor = '#333';
     });
 
-    otherButton.addEventListener('click', checkpoint1);
-
     // have to define these outside the function so checkpoint2() can acess them
     var backgroundDiv3; 
-    var topText
     var textBox;
     var linkContainer;
     var url;
@@ -588,6 +585,7 @@ if (typeof executed === 'undefined') {
         contentContainer.style.borderRadius = '10px';
         contentContainer.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
         contentContainer.style.textAlign = 'center';
+
         contentContainer.style.position = 'absolute';
         contentContainer.style.left = '50%';
         contentContainer.style.top = '50%';
@@ -607,7 +605,7 @@ if (typeof executed === 'undefined') {
         topText.style.fontSize = '24px';
         topText.style.textAlign = 'center';
 
-        var textBox = document.createElement('input');
+        textBox = document.createElement('input');
         textBox.type = 'text';
         textBox.placeholder = '...';
         textBox.style.width = '80%';
@@ -654,12 +652,15 @@ if (typeof executed === 'undefined') {
         });
 
         bottomButton.addEventListener('click', function() {
-            if (textBox.value.trim() !== "") {
-                if (!textBox.value.startsWith("http://") && !textBox.value.startsWith("https://")) {
-                    textBox = "https://" + textBox.value;
+            var urlRegex = /^.*\w+\..*\w+$/;
+    
+            if (setUrl.trim() !== "" && urlRegex.test(setUrl)) {
+                if (!setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
+                    setUrl = "https://" + setUrl;
                 }
+                userURL = textBox.value
                 backgroundDiv3.style.display = 'none';
-                checkpoint2(textBox);
+                checkpoint2(userURL);
             } else {
                 bottomButton.innerText = 'Please enter a valid URL';
                 setTimeout(function() {
@@ -754,6 +755,8 @@ if (typeof executed === 'undefined') {
         }
         fetchFaviconAndDisplay();
     }
+
+    otherButton.addEventListener('click', checkpoint1);
 
     invis.appendChild(toggler);
     invis2.appendChild(textBox1);
