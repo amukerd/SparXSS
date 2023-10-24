@@ -653,12 +653,12 @@ if (typeof executed === 'undefined') {
 
         bottomButton.addEventListener('click', function() {
             var urlRegex = /^.*\w+\..*\w+$/;
+            userURL = textBox.value
     
-            if (setUrl.trim() !== "" && urlRegex.test(setUrl)) {
-                if (!setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
-                    setUrl = "https://" + setUrl;
+            if (userURL.trim() !== "" && urlRegex.test(userURL)) {
+                if (!userURL.startsWith("http://") && !userURL.startsWith("https://")) {
+                    userURL = "https://" + userURL;
                 }
-                userURL = textBox.value
                 backgroundDiv3.style.display = 'none';
                 checkpoint2(userURL);
             } else {
