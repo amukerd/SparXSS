@@ -2,8 +2,6 @@
 if (typeof executed === 'undefined') {
     executed = true;
 
-    var redirectSwitcher = false; // im a retard
-
     // eruda bc useful for debugging
     (function(){var script=document.createElement("script");
         script.src="https://cdn.jsdelivr.net/npm/eruda";
@@ -773,7 +771,7 @@ if (typeof executed === 'undefined') {
     backgroundDiv2.appendChild(contentContainer);
     document.body.appendChild(backgroundDiv2);
 
-    // var redirectSwitcher = false; forgot that this was (idfk searched for or something) earlier than it is defined so... readded it to the top of the script
+    var redirectSwitcher = false;
 
     function tempRedirector() {
         var setUrl = textBox1.value;
