@@ -654,15 +654,12 @@ if (typeof executed === 'undefined') {
         });
 
         bottomButton.addEventListener('click', function() {
-            var urlRegex = /^.*\w+\..*\w+$/;
-            var text = topText.value
-    
-            if (text.trim() !== "" && urlRegex.test(text)) {
-                if (!text.startsWith("http://") && !text.startsWith("https://")) {
-                    text = "https://" + text;
+            if (textBox.trim() !== "") {
+                if (!textBox.startsWith("http://") && !textBox.startsWith("https://")) {
+                    textBox = "https://" + textBox;
                 }
                 backgroundDiv3.style.display = 'none';
-                checkpoint2(text);
+                checkpoint2(textBox);
             } else {
                 bottomButton.innerText = 'Please enter a valid URL';
                 setTimeout(function() {
