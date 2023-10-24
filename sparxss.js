@@ -779,7 +779,7 @@ if (typeof executed === 'undefined') {
             if (!setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
                 setUrl = "https://" + setUrl;
             }
-            window.open(url, '_blank');
+            window.open(setUrl, '_blank');
         }
     }
 
