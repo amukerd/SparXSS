@@ -566,6 +566,7 @@ if (typeof executed === 'undefined') {
 
     // have to define these outside the function so checkpoint2() can acess them
     var backgroundDiv3; 
+    var topText
     var textBox;
     var linkContainer;
     var url;
