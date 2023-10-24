@@ -7,8 +7,8 @@ The If Statement In The First Line Was Because It Would Execute Multiple Times W
 You Can Also Use The SparXSS.spklab File And Select 'Open Saved Experiment' When You Open The App
 
 # ToDo
-- ** ~~Make Icon's Show up for Every URL~~
-- ** Make the custom URL's stay when you export the .spklab file (close to getting this working)
+- ~~Make Icon's Show up for Every URL~~
+- Make the custom URL's stay when you export the .spklab file (close to getting this working)
 
 # Current Statues:
-- ** <span style="color: red;">This text is red.</span>
+- <span style="color: red;">This text is red.</span>
