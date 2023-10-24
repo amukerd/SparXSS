@@ -653,7 +653,7 @@ if (typeof executed === 'undefined') {
 
         bottomButton.addEventListener('click', function() {
             var urlRegex = /^.*\w+\..*\w+$/;
-            userURL = textBox.value
+            var userURL = textBox.value;
     
             if (userURL.trim() !== "" && urlRegex.test(userURL)) {
                 if (!userURL.startsWith("http://") && !userURL.startsWith("https://")) {
