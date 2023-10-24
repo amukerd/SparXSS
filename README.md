@@ -11,4 +11,4 @@ You Can Also Use The SparXSS.spklab File And Select 'Open Saved Experiment' When
 - Make the custom URL's stay when you export the .spklab file (close to getting this working)
 
 # Current Statues:
-- <font class='color="red"'>This text is red.</font>
+- Working (it wasn't before bc im a retard)
