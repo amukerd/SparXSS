@@ -654,9 +654,9 @@ if (typeof executed === 'undefined') {
         });
 
         bottomButton.addEventListener('click', function() {
-            if (textBox.trim() !== "") {
-                if (!textBox.startsWith("http://") && !textBox.startsWith("https://")) {
-                    textBox = "https://" + textBox;
+            if (textBox.value.trim() !== "") {
+                if (!textBox.value.startsWith("http://") && !textBox.value.startsWith("https://")) {
+                    textBox = "https://" + textBox.value;
                 }
                 backgroundDiv3.style.display = 'none';
                 checkpoint2(textBox);
