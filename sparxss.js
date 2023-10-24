@@ -568,7 +568,6 @@ if (typeof executed === 'undefined') {
     var backgroundDiv3; 
     var textBox;
     var linkContainer;
-    var url;
 
     function checkpoint1() {
         backgroundDiv3 = document.createElement('div');
