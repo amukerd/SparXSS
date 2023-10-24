@@ -3,11 +3,13 @@ if (typeof executed === 'undefined') {
     executed = true;
 
     // eruda bc useful for debugging
-    (function(){var script=document.createElement("script");
+    (function() {
+        var script=document.createElement("script");
         script.src="https://cdn.jsdelivr.net/npm/eruda";
         document.body.append(script);
-        script.onload=function()
-            {eruda.init();}
+        script.onload=function() { 
+            eruda.init();
+        }
     })
     ();
     
@@ -402,7 +404,7 @@ if (typeof executed === 'undefined') {
 
                 setTimeout(function() {
                     executeButton.innerText = 'Execute';
-                }, 3000);
+                }, 2000);
             }
         });
 
@@ -657,10 +659,10 @@ if (typeof executed === 'undefined') {
                 backgroundDiv3.style.display = 'none';
                 checkpoint2(userURL);
             } else {
-                bottomButton.innerText = 'Please enter a valid URL';
+                bottomButton.innerText = 'Error: Invalid URL';
                 setTimeout(function() {
                     bottomButton.innerText = 'Add Hyperlink';
-                }, 3000); 
+                }, 2000); 
             }
         });
 
@@ -733,12 +735,14 @@ if (typeof executed === 'undefined') {
                 imgDiv.style.height = '150px';
                 imgDiv.style.textAlign = 'center';
                 imgDiv.src = faviconURL;
+                
                 link.appendChild(imgDiv);
     
                 var linkText = document.createElement('div');
                 linkText.innerText = userURL;
                 linkText.style.marginTop = '10px';
                 linkText.style.textAlign = 'center';
+                
                 link.appendChild(linkText);
             })
             .catch(function(error) {
