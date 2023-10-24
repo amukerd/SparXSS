@@ -566,7 +566,7 @@ if (typeof executed === 'undefined') {
     var backgroundDiv3; 
     var textBox;
     var linkContainer;
-    var url;
+    var userURL;
 
     function checkpoint1() {
         backgroundDiv3 = document.createElement('div');
@@ -653,7 +653,7 @@ if (typeof executed === 'undefined') {
 
         bottomButton.addEventListener('click', function() {
             var urlRegex = /^.*\w+\..*\w+$/;
-            var userURL = textBox.value;
+            userURL = textBox.value;
     
             if (userURL.trim() !== "" && urlRegex.test(userURL)) {
                 if (!userURL.startsWith("http://") && !userURL.startsWith("https://")) {
