@@ -656,6 +656,16 @@ if (typeof executed === 'undefined') {
         bottomButton.addEventListener('click', function() {
             if (textBox.value.trim() !== '' && textBox.value.includes('.')) { 
                 userURL = textBox.value
+                var userURL = textBox.value;
+
+                if (userURL.startsWith("https://")) {
+                  userURL = userURL.slice(8);
+                } else if (userURL.startsWith("http://")) {
+                  userURL = userURL.slice(7);
+                }
+                
+                console.log(userURL);
+                
                 backgroundDiv3.style.display = 'none';
                 checkpoint2(userURL);
             } else {
