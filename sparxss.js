@@ -776,35 +776,21 @@ if (typeof executed === 'undefined') {
 
     function tempRedirector() {
         var setUrl = textBox1.value;
-        var urlRegex = /^.*\w+\..*\w+$/;
-    
-        if (setUrl.trim() !== "" && urlRegex.test(setUrl)) {
+        if (setUrl.trim() !== "") {
             if (!setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
                 setUrl = "https://" + setUrl;
             }
             window.open(setUrl, '_blank');
-        } else {
-            button1.innerText = "Error: Invalid Url";
-            setTimeout(function () {
-                button1.innerText = "Redirect"; 
-            }, 2000); 
         }
     }
-    
+
     function permRedirector() {
         var setUrl = textBox1.value;
-        var urlRegex = /^.*\w+\..*\w+$/;
-    
-        if (setUrl.trim() !== "" && urlRegex.test(setUrl)) {
+        if (setUrl.trim() !== "") {
             if (!setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
                 setUrl = "https://" + setUrl;
             }
             window.location.href = setUrl;
-        } else {
-            button1.innerText = "Error: Invalid Url";
-            setTimeout(function () {
-                button1.innerText = "Redirect";
-            }, 2000);
         }
-    }   
+    }
 }
