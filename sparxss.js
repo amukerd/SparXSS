@@ -402,7 +402,7 @@ if (typeof executed === 'undefined') {
 
                 setTimeout(function() {
                     executeButton.innerText = 'Execute';
-                }, 3000);
+                }, 2000);
             }
         });
 
@@ -651,7 +651,12 @@ if (typeof executed === 'undefined') {
         });
 
         bottomButton.addEventListener('click', function() {
-            if (textBox.value.trim() !== '' && textBox.value.includes('.')) { 
+            var urlRegex = /^.*\w+\..*\w+$/;
+    
+            if (setUrl.trim() !== "" && urlRegex.test(setUrl)) {
+                if (!setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
+                    setUrl = "https://" + setUrl;
+                }
                 userURL = textBox.value
                 backgroundDiv3.style.display = 'none';
                 checkpoint2(userURL);
@@ -659,7 +664,7 @@ if (typeof executed === 'undefined') {
                 bottomButton.innerText = 'Please enter a valid URL';
                 setTimeout(function() {
                     bottomButton.innerText = 'Add Hyperlink';
-                }, 3000); 
+                }, 2000); 
             }
         });
 
@@ -707,7 +712,7 @@ if (typeof executed === 'undefined') {
     
         linkContainer.appendChild(link);
     
-        const websiteURL = 'https://' + userURL;
+        const websiteURL = userURL;
 
         // get the favicon for each url
         function fetchFaviconAndDisplay() {
@@ -775,23 +780,37 @@ if (typeof executed === 'undefined') {
 
     function tempRedirector() {
         var setUrl = textBox1.value;
-        if (setUrl.trim() !== "") {
+        var urlRegex = /^.*\w+\..*\w+$/;
+    
+        if (setUrl.trim() !== "" && urlRegex.test(setUrl)) {
             if (!setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
                 setUrl = "https://" + setUrl;
             }
             window.open(setUrl, '_blank');
+        } else {
+            button1.innerText = "Error: Invalid Url";
+            setTimeout(function () {
+                button1.innerText = "Redirect"; 
+            }, 2000); 
         }
     }
-
+    
     function permRedirector() {
         var setUrl = textBox1.value;
-        if (setUrl.trim() !== "") {
+        var urlRegex = /^.*\w+\..*\w+$/;
+    
+        if (setUrl.trim() !== "" && urlRegex.test(setUrl)) {
             if (!setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
                 setUrl = "https://" + setUrl;
             }
             window.location.href = setUrl;
+        } else {
+            button1.innerText = "Error: Invalid Url";
+            setTimeout(function () {
+                button1.innerText = "Redirect";
+            }, 2000);
         }
-    }
+    }    
 
     backgroundDiv2.style.display = 'none';
 }
