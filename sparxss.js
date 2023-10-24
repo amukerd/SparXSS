@@ -588,7 +588,6 @@ if (typeof executed === 'undefined') {
         contentContainer.style.borderRadius = '10px';
         contentContainer.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
         contentContainer.style.textAlign = 'center';
-
         contentContainer.style.position = 'absolute';
         contentContainer.style.left = '50%';
         contentContainer.style.top = '50%';
@@ -608,7 +607,7 @@ if (typeof executed === 'undefined') {
         topText.style.fontSize = '24px';
         topText.style.textAlign = 'center';
 
-        textBox = document.createElement('input');
+        var textBox = document.createElement('input');
         textBox.type = 'text';
         textBox.placeholder = '...';
         textBox.style.width = '80%';
@@ -656,14 +655,14 @@ if (typeof executed === 'undefined') {
 
         bottomButton.addEventListener('click', function() {
             var urlRegex = /^.*\w+\..*\w+$/;
-            var topText = topText.value
+            var text = topText.value
     
-            if (topText.trim() !== "" && urlRegex.test(topText)) {
-                if (!topText.startsWith("http://") && !topText.startsWith("https://")) {
-                    topText = "https://" + topText;
+            if (text.trim() !== "" && urlRegex.test(text)) {
+                if (!text.startsWith("http://") && !text.startsWith("https://")) {
+                    text = "https://" + text;
                 }
                 backgroundDiv3.style.display = 'none';
-                checkpoint2(topText);
+                checkpoint2(text);
             } else {
                 bottomButton.innerText = 'Please enter a valid URL';
                 setTimeout(function() {
