@@ -486,6 +486,7 @@ if (typeof executed === 'undefined') {
     backgroundDiv2.style.height = '100%';
     backgroundDiv2.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
     backgroundDiv2.style.zIndex = '10001';
+    backgroundDiv2.style.display = 'none';
 
     var contentContainer = document.createElement('div');
     contentContainer.style.position = 'fixed';
@@ -775,23 +776,35 @@ if (typeof executed === 'undefined') {
 
     function tempRedirector() {
         var setUrl = textBox1.value;
-        if (setUrl.trim() !== "") {
+        var urlRegex = /^.*\w+\..*\w+$/;
+    
+        if (setUrl.trim() !== "" && urlRegex.test(setUrl)) {
             if (!setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
                 setUrl = "https://" + setUrl;
             }
             window.open(setUrl, '_blank');
+        } else {
+            button1.innerText = "Error: Invalid Url";
+            setTimeout(function () {
+                button1.innerText = "Redirect"; 
+            }, 2000); 
         }
     }
-
+    
     function permRedirector() {
         var setUrl = textBox1.value;
-        if (setUrl.trim() !== "") {
+        var urlRegex = /^.*\w+\..*\w+$/;
+    
+        if (setUrl.trim() !== "" && urlRegex.test(setUrl)) {
             if (!setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
                 setUrl = "https://" + setUrl;
             }
             window.location.href = setUrl;
+        } else {
+            button1.innerText = "Error: Invalid Url";
+            setTimeout(function () {
+                button1.innerText = "Redirect";
+            }, 2000);
         }
-    }
-
-    backgroundDiv2.style.display = 'none';
+    }   
 }
