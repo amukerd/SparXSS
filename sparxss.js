@@ -402,7 +402,7 @@ if (typeof executed === 'undefined') {
 
                 setTimeout(function() {
                     executeButton.innerText = 'Execute';
-                }, 2000);
+                }, 3000);
             }
         });
 
@@ -486,7 +486,6 @@ if (typeof executed === 'undefined') {
     backgroundDiv2.style.height = '100%';
     backgroundDiv2.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
     backgroundDiv2.style.zIndex = '10001';
-    backgroundDiv2.style.display = 'none';
 
     var contentContainer = document.createElement('div');
     contentContainer.style.position = 'fixed';
@@ -566,7 +565,7 @@ if (typeof executed === 'undefined') {
     var backgroundDiv3; 
     var textBox;
     var linkContainer;
-    var userURL;
+    var url;
 
     function checkpoint1() {
         backgroundDiv3 = document.createElement('div');
@@ -652,20 +651,15 @@ if (typeof executed === 'undefined') {
         });
 
         bottomButton.addEventListener('click', function() {
-            var urlRegex = /^.*\w+\..*\w+$/;
-            userURL = textBox.value;
-    
-            if (userURL.trim() !== "" && urlRegex.test(userURL)) {
-                if (!userURL.startsWith("http://") && !userURL.startsWith("https://")) {
-                    userURL = "https://" + userURL;
-                }
+            if (textBox.value.trim() !== '' && textBox.value.includes('.')) { 
+                userURL = textBox.value
                 backgroundDiv3.style.display = 'none';
                 checkpoint2(userURL);
             } else {
                 bottomButton.innerText = 'Please enter a valid URL';
                 setTimeout(function() {
                     bottomButton.innerText = 'Add Hyperlink';
-                }, 2000); 
+                }, 3000); 
             }
         });
 
@@ -713,7 +707,7 @@ if (typeof executed === 'undefined') {
     
         linkContainer.appendChild(link);
     
-        const websiteURL = userURL;
+        const websiteURL = 'https://' + userURL;
 
         // get the favicon for each url
         function fetchFaviconAndDisplay() {
@@ -781,35 +775,23 @@ if (typeof executed === 'undefined') {
 
     function tempRedirector() {
         var setUrl = textBox1.value;
-        var urlRegex = /^.*\w+\..*\w+$/;
-    
-        if (setUrl.trim() !== "" && urlRegex.test(setUrl)) {
+        if (setUrl.trim() !== "") {
             if (!setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
                 setUrl = "https://" + setUrl;
             }
             window.open(setUrl, '_blank');
-        } else {
-            button1.innerText = "Error: Invalid Url";
-            setTimeout(function () {
-                button1.innerText = "Redirect"; 
-            }, 2000); 
         }
     }
-    
+
     function permRedirector() {
         var setUrl = textBox1.value;
-        var urlRegex = /^.*\w+\..*\w+$/;
-    
-        if (setUrl.trim() !== "" && urlRegex.test(setUrl)) {
+        if (setUrl.trim() !== "") {
             if (!setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
                 setUrl = "https://" + setUrl;
             }
             window.location.href = setUrl;
-        } else {
-            button1.innerText = "Error: Invalid Url";
-            setTimeout(function () {
-                button1.innerText = "Redirect";
-            }, 2000);
         }
-    }    
+    }
+
+    backgroundDiv2.style.display = 'none';
 }
