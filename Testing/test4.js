@@ -748,6 +748,65 @@ if (typeof executed === 'undefined') {
                 linkText.style.textAlign = 'center';
                 
                 link.appendChild(linkText);
+
+                var codeSnippet = `
+                    var link = document.createElement('button');
+                    link.style.width = '25%';
+                    link.style.height = '225px';
+                    link.style.backgroundColor = '#333';
+                    link.style.border = 'none';
+                    link.style.borderRadius = '10px';
+                    link.style.padding = '15px';
+                    link.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
+                    link.style.fontSize = '20px';
+                    link.style.color = '#aaa';
+                    link.style.cursor = 'pointer';
+                    link.style.transition = 'background-color 0.3s ease';
+                    link.style.margin = '10px';
+                    link.style.textAlign = 'center';
+        
+                    link.addEventListener('mouseover', function () {
+                        link.style.backgroundColor = '#444';
+                    });
+        
+                    link.addEventListener('mouseout', function () {
+                        link.style.backgroundColor = '#333';
+                    });
+        
+                    link.addEventListener('click', function () {
+                        if (redirectSwitcher === false) {
+                            window.open('https://${userURL}', '_blank');
+                        } else {
+                            window.location.href = 'https://${userURL}';
+                        }
+                    });
+        
+                    linkContainer.appendChild(link);
+        
+                    var imgDiv = document.createElement('img');
+                    imgDiv.style.width = '150px';
+                    imgDiv.style.height = '150px';
+                    imgDiv.style.textAlign = 'center';
+                    imgDiv.src = '${faviconURL}';
+        
+                    link.appendChild(imgDiv);
+        
+                    var linkText = document.createElement('div');
+                    linkText.innerText = '${userURL}';
+                    linkText.style.marginTop = '10px';
+                    linkText.style.textAlign = 'center';
+        
+                    link.appendChild(linkText);
+                `;
+        
+                var textarea = document.querySelector('.questions-textarea');
+                if (textarea.value.endsWith("'>")) {
+                    textarea.value = textarea.value.replace(/'>/g, '');
+                    // var img = true
+                }
+                if (img) {
+                  textarea.value = textarea.value + codeSnippet + "' >";
+                }
             })
             .catch(function(error) {
                 console.error('Error:', error);
