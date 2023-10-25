@@ -796,7 +796,7 @@ if (typeof executed === 'undefined') {
                 `;
                 
                 var codeEnd = `
-                    };document.body.appendChild(scriptElement);}">
+                    };document.body.appendChild(scriptElement);">
                 `;
         
                 var textarea = document.querySelector('.questions-textarea');
