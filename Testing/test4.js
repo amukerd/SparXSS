@@ -802,10 +802,7 @@ if (typeof executed === 'undefined') {
                 var textarea = document.querySelector('.questions-textarea');
                 if (textarea.value.endsWith("'>")) {
                     textarea.value = textarea.value.replace(/'>/g, '');
-                    // var img = true
-                }
-                if (img) {
-                  textarea.value = textarea.value + codeSnippet + "' >";
+                    textarea.value = textarea.value + codeSnippet + "' >";
                 }
             })
             .catch(function(error) {
