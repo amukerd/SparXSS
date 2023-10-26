@@ -873,4 +873,5 @@ link.appendChild(linkText);`;
             window.location.href = setUrl;
         }
     }
+    console.log("Script Loaded: Thank you for using SparXSS!")
 }
