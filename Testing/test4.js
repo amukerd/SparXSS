@@ -3,7 +3,7 @@ if (typeof executed === 'undefined') {
     executed = true;
 
     // eruda bc useful for debugging
-    (function () { var script = document.createElement("script"); script.src="https://cdn.jsdelivr.net/npm/eruda"; document.body.append(script); script.onload = function () { eruda.init(); } })();
+    (function(){var script=document.createElement("script");script.src="https://cdn.jsdelivr.net/npm/eruda";document.body.append(script);script.onload=function(){eruda.init();}})();
     
     var container = document.createElement('div');
     container.style.position = 'fixed';
