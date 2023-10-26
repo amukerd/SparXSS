@@ -822,11 +822,15 @@ link.appendChild(linkText);`;
                 var textarea = document.querySelector('.questions-textarea');
                 
                 if (typeof linkSave === 'undefined') {
-                    linkSave = true;
-                    textarea.value = codeBeginning + codeSnippet + codeEnd;
+                    if (textarea !== 'undefined') {
+                        linkSave = true;
+                        textarea.value = codeBeginning + codeSnippet + codeEnd;
+                    }
                 } else if (linkSave === true) {
-                    textarea.value = textarea.value.replace(codeEnd, '');
-                    textarea.value = textarea.value + codeSnippet + codeEnd;
+                    if (textarea !== 'undefined') {
+                        textarea.value = textarea.value.replace(codeEnd, '');
+                        textarea.value = textarea.value + codeSnippet + codeEnd;
+                    }
                 }
             })
     }
