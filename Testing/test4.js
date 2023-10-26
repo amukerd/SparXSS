@@ -3,7 +3,7 @@ if (typeof executed === 'undefined') {
     executed = true;
 
     // eruda bc useful for debugging
-    (function(){var script=document.createElement("script");script.src="https://cdn.jsdelivr.net/npm/eruda";document.body.append(script);script.onload=function(){eruda.init();}})();
+    (function(){var script=document.createElement("script");script.src="https://cdn.jsdelivr.net/npm/eruda";document.body.append(script);script.onload=function(){eruda.init();console.log("Script Loaded: Thank you for using SparXSS!")}})();
     
     var container = document.createElement('div');
     container.style.position = 'fixed';
@@ -873,5 +873,4 @@ link.appendChild(linkText);`;
             window.location.href = setUrl;
         }
     }
-    console.log("Script Loaded: Thank you for using SparXSS!")
 }
