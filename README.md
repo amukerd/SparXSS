@@ -13,6 +13,10 @@ Or Download The SparXSS.spklab File And Select 'Open Saved Experiment' When You 
 
 ## Changelog
 
+10/25/2023
+- Basic link saving functionality added
+- The hyperlink button now accepts pressing enter to add a hyperlink
+
 10/24/2023
 - The checkpoint2 and getFaviconUrl functions have been combined into 1 function (only checkpoint2 now)
 - The Hyperlink URL can now have https:// when it could not before
