@@ -684,8 +684,8 @@ if (typeof executed === 'undefined') {
                 var match = data.match(/<link.*?rel=["']icon["'].*?href=["'](.*?)["']/i);
                 if (match) {
                     faviconURL = match[1];
-                    console.log("Current Website URL:" + websiteURL)
-                    console.log("Current Favicon URL:" + faviconURL)
+                    console.log("Website URL: " + websiteURL)
+                    console.log("Favicon Path: " + faviconURL)
                     if (faviconURL.startsWith('/') && !websiteURL.endsWith('/')) {
                         faviconURL = websiteURL + faviconURL;
                     } else if (faviconURL.startsWith('http')) {
@@ -697,7 +697,7 @@ if (typeof executed === 'undefined') {
                     faviconURL = 'https://www.google.com/s2/favicons?domain=' + userURL;
                 }
 
-                console.log("Final Favicon:" + faviconURL)
+                console.log("Final Favicon URL: " + faviconURL)
     
                 var link = document.createElement('button');
                 link.style.width = '25%';
