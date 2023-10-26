@@ -684,7 +684,7 @@ if (typeof executed === 'undefined') {
                 var match = data.match(/<link.*?rel=["']icon["'].*?href=["'](.*?)["']/i);
                 if (match) {
                     faviconURL = match[1];
-                    if (faviconURL.startsWith('/') && !websiteURL.endsWith('/')) {
+                    if (faviconURL.startsWith('/')) {
                         faviconURL = websiteURL + faviconURL;
                     } else {
                         faviconURL = websiteURL + '/' + faviconURL;
