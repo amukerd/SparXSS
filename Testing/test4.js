@@ -585,7 +585,7 @@ if (typeof executed === 'undefined') {
         contentContainer.style.transform = 'translate(-50%, -50%)';
 
         var topText = document.createElement('div');
-        topText.innerText = 'Add Your URL Without the "https://"';
+        topText.innerText = 'Add Your URL Below:"';
         topText.style.padding = '10px';
         topText.style.marginTop = '35px';
         topText.style.border = 'none';
