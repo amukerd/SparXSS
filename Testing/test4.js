@@ -621,6 +621,26 @@ if (typeof executed === 'undefined') {
         textBox.addEventListener('mouseout', function() {
             textBox.style.backgroundColor = '#333';
         });
+        
+        textBox.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                if (textBox.value.trim() !== '' && textBox.value.includes('.')) { 
+                    userURL = textBox.value
+                    if (userURL.startsWith("https://")) {
+                      userURL = userURL.slice(8);
+                    } else if (userURL.startsWith("http://")) {
+                      userURL = userURL.slice(7);
+                    }                
+                    backgroundDiv3.style.display = 'none';
+                    checkpoint2(userURL);
+                } else {
+                    bottomButton.innerText = 'Error: Invalid URL';
+                    setTimeout(function() {
+                        bottomButton.innerText = 'Add Hyperlink';
+                    }, 2000); 
+                }
+            }
+        });
 
         var bottomButton = document.createElement('button');
         bottomButton.innerText = 'Add Hyperlink';
