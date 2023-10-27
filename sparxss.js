@@ -265,7 +265,11 @@ if (typeof executed === 'undefined') {
     });
 
     button3.addEventListener('click', function() {
-        backgroundDiv.style.display = 'block';
+        if (backgroundDiv.style.display === 'none') {
+            backgroundDiv.style.display = 'block';
+        } else {
+            backgroundDiv.style.display = 'none'; 
+        }
     });
 
     // start of javascript execution elements
