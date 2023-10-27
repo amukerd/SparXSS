@@ -645,6 +645,13 @@ if (typeof executed === 'undefined') {
             cancelHyperLinks.style.backgroundColor = '#333';
         });
 
+        cancelHyperLinks.addEventListener('click', function() {
+            var backgroundDiv3 = document.getElementById("backgroundDiv3");
+            if (backgroundDiv3) {
+                backgroundDiv3.remove();
+            }
+        }
+
         var topText = document.createElement('div');
         topText.innerText = 'Add Your URL Below:';
         topText.style.padding = '10px';
