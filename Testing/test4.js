@@ -502,7 +502,7 @@ if (typeof executed === 'undefined') {
     contentContainer.style.backgroundColor = '#222';
     contentContainer.style.overflow = 'auto';
 
-    var cancelHyperLinks = document.getElementById("cancelButton");
+    var cancelHyperLinks = document.createElement('button');
     cancelHyperLinks.innerText = 'X';
     cancelHyperLinks.style.position = 'fixed';
     cancelHyperLinks.style.width = '30px';
