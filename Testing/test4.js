@@ -636,6 +636,7 @@ if (typeof executed === 'undefined') {
         cancelHyperLinks.style.outline = 'none';
         cancelHyperLinks.style.textAlign = 'center';
         cancelHyperLinks.style.cursor = 'pointer';
+        cancelHyperLinks.style.fontWeight = 'bold';
     
         cancelHyperLinks.addEventListener('mouseover', function() {
             cancelHyperLinks.style.backgroundColor = '#444';
