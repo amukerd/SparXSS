@@ -11,12 +11,13 @@ Or Download The SparXSS.spklab File And Select 'Open Saved Experiment' When You 
 - ~~Make Icon's Show up for Every URL~~
 - ~~Make the custom URL's stay when you export the .spklab file~~ <br>
   (currently working, may be changed in the future- change the link from /sparxss.js to /Testing/test4.js to use)
+- May add a tabbing feature to the javascript, but this is not a final decision
 
 ## Changelog
 
 10/26/2023
 - Found out you have to click the textbox to update it before exporting to make the links actually save
--- yeet
+- Made the javascript box load with the script instead of everytime the button is clicked
 
 10/25/2023
 - Basic link saving functionality added
