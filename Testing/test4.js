@@ -506,7 +506,7 @@ if (typeof executed === 'undefined') {
     copier.innerText = 'Copy Links';
     copier.style.position = 'fixed';
     copier.style.bottom = '20px';
-    copier.style.width = '10%';
+    copier.style.width = '15%';
     copier.style.left = '45%';
     copier.style.backgroundColor = '#333';
     copier.style.border = 'none';
@@ -537,7 +537,7 @@ if (typeof executed === 'undefined') {
 
     var closeButton = document.createElement('div');
     closeButton.innerText = 'Close Menu';
-    closeButton.style.width = '35%';
+    closeButton.style.width = '33%';
     closeButton.style.backgroundColor = '#333';
     closeButton.style.border = 'none';
     closeButton.style.borderRadius = '10px';
@@ -570,7 +570,7 @@ if (typeof executed === 'undefined') {
 
     var otherButton = document.createElement('div');
     otherButton.innerText = 'New Hyperlink';
-    otherButton.style.width = '35%';
+    otherButton.style.width = '33%';
     otherButton.style.backgroundColor = '#333';
     otherButton.style.border = 'none';
     otherButton.style.borderRadius = '10px';
