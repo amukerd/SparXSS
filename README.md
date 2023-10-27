@@ -9,8 +9,8 @@ Or Download The SparXSS.spklab File And Select 'Open Saved Experiment' When You 
 
 ## ToDo
 - ~~Make Icon's Show up for Every URL~~
-- Make the custom URL's stay when you export the .spklab file <br>
-  currently working, change the link from /sparxss.js to /Testing/test4.js, __no changes are final__
+- ~~Make the custom URL's stay when you export the .spklab file~~ <br>
+  (currently working, may be changed in the future- change the link from /sparxss.js to /Testing/test4.js)
 
 ## Changelog
 
