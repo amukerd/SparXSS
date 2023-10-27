@@ -266,9 +266,9 @@ if (typeof executed === 'undefined') {
 
     button3.addEventListener('click', function() {
         if (backgroundDiv.style.display !== 'none') {
-            background.style.display = 'none'
+            backgroundDiv.style.display = 'none'
         } else {
-            background.style.display = ''
+            backgroundDiv.style.display = ''
         }
     });
 
