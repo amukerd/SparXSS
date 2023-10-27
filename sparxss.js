@@ -265,11 +265,7 @@ if (typeof executed === 'undefined') {
     });
 
     button3.addEventListener('click', function() {
-        if (backgroundDiv.style.display === 'none') {
-            backgroundDiv.style.display = 'block';
-        } else {
-            backgroundDiv.style.display = 'none'; 
-        }
+        backgroundDiv.style.display = 'block';
     });
 
     // start of javascript execution elements
@@ -438,7 +434,7 @@ if (typeof executed === 'undefined') {
     });
 
     deleteButton.addEventListener('click', function() {
-        document.body.removeChild(backgroundDiv);
+        backgroundDiv.style.display = 'none';
     });
 
     buttonContainer.appendChild(executeButton);
