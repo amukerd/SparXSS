@@ -502,31 +502,6 @@ if (typeof executed === 'undefined') {
     contentContainer.style.backgroundColor = '#222';
     contentContainer.style.overflow = 'auto';
 
-    var cancelHyperLinks = document.createElement('button');
-    cancelHyperLinks.innerText = 'X';
-    cancelHyperLinks.style.position = 'fixed';
-    cancelHyperLinks.style.width = '30px';
-    cancelHyperLinks.style.height = '30px';
-    cancelHyperLinks.style.fontSize = '20px'; 
-    cancelHyperLinks.style.top = '-5px';
-    cancelHyperLinks.style.right = '-5px';
-    cancelHyperLinks.style.margin = '10px';
-    cancelHyperLinks.style.color = '#aaa';
-    cancelHyperLinks.style.backgroundColor = '#333';
-    cancelHyperLinks.style.border = 'none';
-    cancelHyperLinks.style.borderRadius = '50%';
-    cancelHyperLinks.style.outline = 'none';
-    cancelHyperLinks.style.textAlign = 'center';
-    cancelHyperLinks.style.cursor = 'pointer';
-
-    cancelHyperLinks.addEventListener('mouseover', function() {
-        cancelHyperLinks.style.backgroundColor = '#444';
-    });
-
-    cancelHyperLinks.addEventListener('mouseout', function() {
-        cancelHyperLinks.style.backgroundColor = '#333';
-    });
-
     var copier = document.createElement('button');
     copier.innerText = 'Copy Links';
     copier.style.position = 'fixed';
@@ -640,11 +615,35 @@ if (typeof executed === 'undefined') {
         contentContainer.style.borderRadius = '10px';
         contentContainer.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
         contentContainer.style.textAlign = 'center';
-
         contentContainer.style.position = 'absolute';
         contentContainer.style.left = '50%';
         contentContainer.style.top = '50%';
         contentContainer.style.transform = 'translate(-50%, -50%)';
+
+        var cancelHyperLinks = document.createElement('button');
+        cancelHyperLinks.innerText = 'X';
+        cancelHyperLinks.style.position = 'fixed';
+        cancelHyperLinks.style.width = '30px';
+        cancelHyperLinks.style.height = '30px';
+        cancelHyperLinks.style.fontSize = '20px'; 
+        cancelHyperLinks.style.top = '-5px';
+        cancelHyperLinks.style.right = '-5px';
+        cancelHyperLinks.style.margin = '10px';
+        cancelHyperLinks.style.color = '#aaa';
+        cancelHyperLinks.style.backgroundColor = '#333';
+        cancelHyperLinks.style.border = 'none';
+        cancelHyperLinks.style.borderRadius = '50%';
+        cancelHyperLinks.style.outline = 'none';
+        cancelHyperLinks.style.textAlign = 'center';
+        cancelHyperLinks.style.cursor = 'pointer';
+    
+        cancelHyperLinks.addEventListener('mouseover', function() {
+            cancelHyperLinks.style.backgroundColor = '#444';
+        });
+    
+        cancelHyperLinks.addEventListener('mouseout', function() {
+            cancelHyperLinks.style.backgroundColor = '#333';
+        });
 
         var topText = document.createElement('div');
         topText.innerText = 'Add Your URL Below:';
@@ -747,6 +746,7 @@ if (typeof executed === 'undefined') {
         contentContainer.appendChild(topText);
         contentContainer.appendChild(textBox);
         contentContainer.appendChild(bottomButton);
+        contentContainer.appendChild(cancelHyperLinks);
 
         backgroundDiv3.appendChild(contentContainer);
         document.body.appendChild(backgroundDiv3);
@@ -912,7 +912,6 @@ link.appendChild(linkText);`;
     document.body.appendChild(container);
     document.body.appendChild(invis);
 
-    contentContainer.appendChild(cancelHyperLinks);
     contentContainer.appendChild(linkContainer);
     contentContainer.appendChild(otherButton);
     contentContainer.appendChild(copier);
