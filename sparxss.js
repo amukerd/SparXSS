@@ -234,7 +234,7 @@ if (typeof executed === 'undefined') {
     });
 
     button2.addEventListener('click', function() {
-        backgroundDiv2.style.display = '';
+        backgroundDiv2.style.display = 'block';
     });
 
     var button3 = document.createElement("button");
@@ -265,9 +265,7 @@ if (typeof executed === 'undefined') {
     });
 
     button3.addEventListener('click', function() {
-        if (backgroundDiv.style.display === 'none') {
-            backgroundDiv.style.display = '';
-        }
+        backgroundDiv.style.display = 'block';
     });
 
     // start of javascript execution elements
