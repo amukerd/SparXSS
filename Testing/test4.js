@@ -509,7 +509,7 @@ if (typeof executed === 'undefined') {
     copier.style.width = '10%';
     copier.style.backgroundColor = '#333';
     copier.style.border = 'none';
-    copier.style.padding = '10px 10px';
+    copier.style.padding = '15px';
     copier.style.fontSize = '20px';
     copier.style.borderRadius = '10px';
     copier.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
@@ -517,6 +517,7 @@ if (typeof executed === 'undefined') {
     copier.style.color = '#aaa';
     copier.style.cursor = 'pointer';
     copier.style.outline = 'none';
+    copier.style.textAlign = 'center';
 
     copier.addEventListener('mouseover', function() {
         copier.style.backgroundColor = '#444';
@@ -535,7 +536,7 @@ if (typeof executed === 'undefined') {
 
     var closeButton = document.createElement('div');
     closeButton.innerText = 'Close Menu';
-    closeButton.style.width = '37%';
+    closeButton.style.width = '35%';
     closeButton.style.backgroundColor = '#333';
     closeButton.style.border = 'none';
     closeButton.style.borderRadius = '10px';
@@ -568,7 +569,7 @@ if (typeof executed === 'undefined') {
 
     var otherButton = document.createElement('div');
     otherButton.innerText = 'New Hyperlink';
-    otherButton.style.width = '37%';
+    otherButton.style.width = '35%';
     otherButton.style.backgroundColor = '#333';
     otherButton.style.border = 'none';
     otherButton.style.borderRadius = '10px';
