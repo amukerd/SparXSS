@@ -256,183 +256,187 @@ if (typeof executed === 'undefined') {
         button3.style.backgroundColor = '#333';
     });
 
-    // yay javascript text box being built everytime it is clicked
     button3.addEventListener('click', function() {
-        var backgroundDiv = document.createElement('div');
-        backgroundDiv.style.position = 'fixed';
-        backgroundDiv.style.top = '0';
-        backgroundDiv.style.left = '0';
-        backgroundDiv.style.width = '100%';
-        backgroundDiv.style.height = '100%';
-        backgroundDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-        backgroundDiv.style.zIndex = '10001';
-
-        var contentContainer = document.createElement('div');
-        contentContainer.style.position = 'fixed';
-        contentContainer.style.top = '0';
-        contentContainer.style.left = '0';
-        contentContainer.style.right = '0';
-        contentContainer.style.bottom = '0';
-        contentContainer.style.margin = '75px';
-        contentContainer.style.backgroundColor = '#333';
-        contentContainer.style.padding = '40px';
-        contentContainer.style.borderRadius = '10px';
-        contentContainer.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
-        contentContainer.style.color = '#fff';
-        contentContainer.style.backgroundColor = '#222';
-
-        var largeTextBox = document.createElement('textarea');
-        largeTextBox.style.width = '95%';
-        largeTextBox.style.height = '400px';
-        largeTextBox.style.fontSize = '18px';
-        largeTextBox.style.color = '#fff';
-        largeTextBox.style.backgroundColor = '#333';
-        largeTextBox.style.border = 'none';
-        largeTextBox.style.borderRadius = '10px';
-        largeTextBox.style.padding = '20px';
-        largeTextBox.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
-        largeTextBox.style.resize = 'none';
-        largeTextBox.style.outline = 'none';
-        largeTextBox.setAttribute('spellcheck', 'false');
-        document.body.appendChild(largeTextBox);
-
-        var history = [''];
-        var historyIndex = 0;
-
-        function saveState() {
-            if (historyIndex < history.length - 1) {
-                history = history.slice(0, historyIndex + 1);
-            }
-            history.push(largeTextBox.value);
-            historyIndex = history.length - 1;
-        }
-
-        largeTextBox.addEventListener('input', saveState);
-
-        function undo() {
-            if (historyIndex > 0) {
-                historyIndex--;
-                largeTextBox.value = history[historyIndex];
-            }
-        }
-
-        function redo() {
-            if (historyIndex < history.length - 1) {
-                historyIndex++;
-                largeTextBox.value = history[historyIndex];
-            }
-        }
-
-        largeTextBox.addEventListener('keydown', function(e) {
-            if (e.ctrlKey && e.key === 'z') {
-                e.preventDefault();
-                undo();
-            } else if (e.ctrlKey && e.key === 'y') {
-                e.preventDefault();
-                redo();
-            } else if (e.key === 'Tab') {
-                e.preventDefault();
-                var start = this.selectionStart;
-                var end = this.selectionEnd;
-                var spaces = '    ';
-                var value = this.value;
-                if (start === end) {
-                    this.value = value.substring(0, start) + spaces + value.substring(end);
-                    this.selectionStart = this.selectionEnd = start + spaces.length;
-                } else {
-                    var lines = value.substring(start, end).split('\n');
-                    var indentedText = lines.map(function(line) {
-                        return spaces + line;
-                    }).join('\n');
-                    this.value = value.substring(0, start) + indentedText + value.substring(end);
-                    this.selectionStart = start;
-                    this.selectionEnd = end + spaces.length * lines.length;
-                }
-                saveState();
-            // added deleting a 4 space tab
-            } else if (e.key === 'Backspace' && this.value.substring(this.selectionStart - 4, this.selectionStart) === '    ') {
-                e.preventDefault();
-                var start = this.selectionStart;
-                this.value = this.value.substring(0, start - 4) + this.value.substring(start);
-                this.selectionStart = this.selectionEnd = start - 4;
-                saveState();
-            }
-        });        
-
-        var buttonContainer = document.createElement('div');
-        buttonContainer.style.display = 'flex';
-        buttonContainer.style.justifyContent = 'space-between';
-        buttonContainer.style.marginTop = '20px';
-
-        var executeButton = document.createElement('button');
-        executeButton.innerText = 'Execute';
-        executeButton.style.width = '47.5%';
-        executeButton.style.backgroundColor = '#333';
-        executeButton.style.border = 'none';
-        executeButton.style.borderRadius = '10px';
-        executeButton.style.padding = '15px';
-        executeButton.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
-        executeButton.style.fontSize = '20px';
-        executeButton.style.color = '#aaa';
-        executeButton.style.cursor = 'pointer';
-        executeButton.style.transition = 'background-color 0.3s ease';
-
-        executeButton.addEventListener('mouseover', function() {
-            executeButton.style.backgroundColor = '#444';
-        });
-
-        executeButton.addEventListener('mouseout', function() {
-            executeButton.style.backgroundColor = '#333';
-        });
-
-        // actual javascript execution
-        executeButton.addEventListener('click', function() {
-            var jsCode = largeTextBox.value;
-
-            try {
-                eval(jsCode);
-            } catch (error) {
-                executeButton.innerText = 'Error: Execution Failed';
-
-                setTimeout(function() {
-                    executeButton.innerText = 'Execute';
-                }, 2000);
-            }
-        });
-
-        var deleteButton = document.createElement('button');
-        deleteButton.innerText = 'Close Menu';
-        deleteButton.style.width = '47.5%';
-        deleteButton.style.backgroundColor = '#333';
-        deleteButton.style.border = 'none';
-        deleteButton.style.borderRadius = '10px';
-        deleteButton.style.padding = '15px';
-        deleteButton.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
-        deleteButton.style.fontSize = '20px';
-        deleteButton.style.color = '#aaa';
-        deleteButton.style.cursor = 'pointer';
-        deleteButton.style.transition = 'background-color 0.3s ease';
-
-        deleteButton.addEventListener('mouseover', function() {
-            deleteButton.style.backgroundColor = '#444';
-        });
-
-        deleteButton.addEventListener('mouseout', function() {
-            deleteButton.style.backgroundColor = '#333';
-        });
-
-        deleteButton.addEventListener('click', function() {
-            document.body.removeChild(backgroundDiv);
-        });
-
-        buttonContainer.appendChild(executeButton);
-        buttonContainer.appendChild(deleteButton);
-        contentContainer.appendChild(largeTextBox);
-        contentContainer.appendChild(buttonContainer);
-
-        backgroundDiv.appendChild(contentContainer);
-        document.body.appendChild(backgroundDiv);
+        backgroundDiv.style.display = 'block';
     });
+
+    // start of javascript execution elements
+    var backgroundDiv = document.createElement('div');
+    backgroundDiv.style.position = 'fixed';
+    backgroundDiv.style.top = '0';
+    backgroundDiv.style.left = '0';
+    backgroundDiv.style.width = '100%';
+    backgroundDiv.style.height = '100%';
+    backgroundDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    backgroundDiv.style.zIndex = '10001';
+    backgroundDiv.style.display = 'none';
+
+    var contentContainer = document.createElement('div');
+    contentContainer.style.position = 'fixed';
+    contentContainer.style.top = '0';
+    contentContainer.style.left = '0';
+    contentContainer.style.right = '0';
+    contentContainer.style.bottom = '0';
+    contentContainer.style.margin = '75px';
+    contentContainer.style.backgroundColor = '#333';
+    contentContainer.style.padding = '40px';
+    contentContainer.style.borderRadius = '10px';
+    contentContainer.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
+    contentContainer.style.color = '#fff';
+    contentContainer.style.backgroundColor = '#222';
+
+    var largeTextBox = document.createElement('textarea');
+    largeTextBox.style.width = '95%';
+    largeTextBox.style.height = '400px';
+    largeTextBox.style.fontSize = '18px';
+    largeTextBox.style.color = '#fff';
+    largeTextBox.style.backgroundColor = '#333';
+    largeTextBox.style.border = 'none';
+    largeTextBox.style.borderRadius = '10px';
+    largeTextBox.style.padding = '20px';
+    largeTextBox.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
+    largeTextBox.style.resize = 'none';
+    largeTextBox.style.outline = 'none';
+    largeTextBox.setAttribute('spellcheck', 'false');
+    document.body.appendChild(largeTextBox);
+
+    var history = [''];
+    var historyIndex = 0;
+
+    function saveState() {
+        if (historyIndex < history.length - 1) {
+            history = history.slice(0, historyIndex + 1);
+        }
+        history.push(largeTextBox.value);
+        historyIndex = history.length - 1;
+    }
+
+    largeTextBox.addEventListener('input', saveState);
+
+    function undo() {
+        if (historyIndex > 0) {
+            historyIndex--;
+            largeTextBox.value = history[historyIndex];
+        }
+    }
+
+    function redo() {
+        if (historyIndex < history.length - 1) {
+            historyIndex++;
+            largeTextBox.value = history[historyIndex];
+        }
+    }
+
+    largeTextBox.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.key === 'z') {
+            e.preventDefault();
+            undo();
+        } else if (e.ctrlKey && e.key === 'y') {
+            e.preventDefault();
+            redo();
+        } else if (e.key === 'Tab') {
+            e.preventDefault();
+            var start = this.selectionStart;
+            var end = this.selectionEnd;
+            var spaces = '    ';
+            var value = this.value;
+            if (start === end) {
+                this.value = value.substring(0, start) + spaces + value.substring(end);
+                this.selectionStart = this.selectionEnd = start + spaces.length;
+            } else {
+                var lines = value.substring(start, end).split('\n');
+                var indentedText = lines.map(function(line) {
+                    return spaces + line;
+                }).join('\n');
+                this.value = value.substring(0, start) + indentedText + value.substring(end);
+                this.selectionStart = start;
+                this.selectionEnd = end + spaces.length * lines.length;
+            }
+            saveState();
+        // added deleting a 4 space tab
+        } else if (e.key === 'Backspace' && this.value.substring(this.selectionStart - 4, this.selectionStart) === '    ') {
+            e.preventDefault();
+            var start = this.selectionStart;
+            this.value = this.value.substring(0, start - 4) + this.value.substring(start);
+            this.selectionStart = this.selectionEnd = start - 4;
+            saveState();
+        }
+    });        
+
+    var buttonContainer = document.createElement('div');
+    buttonContainer.style.display = 'flex';
+    buttonContainer.style.justifyContent = 'space-between';
+    buttonContainer.style.marginTop = '20px';
+
+    var executeButton = document.createElement('button');
+    executeButton.innerText = 'Execute';
+    executeButton.style.width = '47.5%';
+    executeButton.style.backgroundColor = '#333';
+    executeButton.style.border = 'none';
+    executeButton.style.borderRadius = '10px';
+    executeButton.style.padding = '15px';
+    executeButton.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
+    executeButton.style.fontSize = '20px';
+    executeButton.style.color = '#aaa';
+    executeButton.style.cursor = 'pointer';
+    executeButton.style.transition = 'background-color 0.3s ease';
+
+    executeButton.addEventListener('mouseover', function() {
+        executeButton.style.backgroundColor = '#444';
+    });
+
+    executeButton.addEventListener('mouseout', function() {
+        executeButton.style.backgroundColor = '#333';
+    });
+
+    // actual javascript execution
+    executeButton.addEventListener('click', function() {
+        var jsCode = largeTextBox.value;
+
+        try {
+            eval(jsCode);
+        } catch (error) {
+            executeButton.innerText = 'Error: Execution Failed';
+
+            setTimeout(function() {
+                executeButton.innerText = 'Execute';
+            }, 2000);
+        }
+    });
+
+    var deleteButton = document.createElement('button');
+    deleteButton.innerText = 'Close Menu';
+    deleteButton.style.width = '47.5%';
+    deleteButton.style.backgroundColor = '#333';
+    deleteButton.style.border = 'none';
+    deleteButton.style.borderRadius = '10px';
+    deleteButton.style.padding = '15px';
+    deleteButton.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
+    deleteButton.style.fontSize = '20px';
+    deleteButton.style.color = '#aaa';
+    deleteButton.style.cursor = 'pointer';
+    deleteButton.style.transition = 'background-color 0.3s ease';
+
+    deleteButton.addEventListener('mouseover', function() {
+        deleteButton.style.backgroundColor = '#444';
+    });
+
+    deleteButton.addEventListener('mouseout', function() {
+        deleteButton.style.backgroundColor = '#333';
+    });
+
+    deleteButton.addEventListener('click', function() {
+        backgroundDiv.style.display = 'none';
+    });
+
+    buttonContainer.appendChild(executeButton);
+    buttonContainer.appendChild(deleteButton);
+    contentContainer.appendChild(largeTextBox);
+    contentContainer.appendChild(buttonContainer);
+
+    backgroundDiv.appendChild(contentContainer);
+    document.body.appendChild(backgroundDiv);
+    // end of javascript execution elements
 
     var modeButton = document.createElement("button");
     modeButton.innerText = "Current Mode: Temporary Redirect";
