@@ -552,6 +552,21 @@ if (typeof executed === 'undefined') {
     copier.style.cursor = 'pointer';
     copier.style.outline = 'none';
 
+    copier.addEventListener('mouseover', function() {
+        copier.style.backgroundColor = '#444';
+    });
+
+    copier.addEventListener('mouseout', function() {
+        copier.style.backgroundColor = '#333';
+    });
+
+    copier.addEventListener('click', function() {
+        var textarea = document.querySelector('.questions-textarea');
+        textarea.select();
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+    });
+
     var otherButton = document.createElement('div');
     otherButton.innerText = 'New Hyperlink';
     otherButton.style.width = '40%';
