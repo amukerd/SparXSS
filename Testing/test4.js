@@ -646,10 +646,7 @@ if (typeof executed === 'undefined') {
         });
 
         cancelHyperLinks.addEventListener('click', function() {
-            var backgroundDiv3 = document.getElementById("backgroundDiv3");
-            if (backgroundDiv3) {
-                backgroundDiv3.remove();
-            }
+            backgroundDiv3.remove();
         }
 
         var topText = document.createElement('div');
