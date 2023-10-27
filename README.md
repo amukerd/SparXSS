@@ -15,6 +15,10 @@ Or Download The SparXSS.spklab File And Select 'Open Saved Experiment' When You 
 
 ## Changelog
 
+10/27/2023
+- Made a third button in the hyperlinks menu that lets you copy the text in the textbox, so you can keep adding links incase you either dont want to export the file, or want to keep adding links
+  If you do hit the copy button, all you have to do is paste the stuff copied to your clipboard in the textbox when reopening the app
+
 10/26/2023
 - Found out you have to click the textbox to update it before exporting to make the links actually save
 - Made the javascript box load with the script instead of everytime the button is clicked
