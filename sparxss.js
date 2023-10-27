@@ -265,10 +265,8 @@ if (typeof executed === 'undefined') {
     });
 
     button3.addEventListener('click', function() {
-        if (backgroundDiv.style.display !== 'none') {
-            backgroundDiv.style.display = 'none'
-        } else {
-            backgroundDiv.style.display = ''
+        if (backgroundDiv.style.display === 'none') {
+            backgroundDiv.style.display = '';
         }
     });
 
