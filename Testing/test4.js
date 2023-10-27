@@ -502,29 +502,29 @@ if (typeof executed === 'undefined') {
     contentContainer.style.backgroundColor = '#222';
     contentContainer.style.overflow = 'auto';
 
-    var cancelButton = document.getElementById("cancelButton");
-    cancelButton.innerText = 'X';
-    cancelButton.style.position = 'fixed';
-    cancelButton.style.width = '30px';
-    cancelButton.style.height = '30px';
-    cancelButton.style.fontSize = '20px'; 
-    cancelButton.style.top = '-5px';
-    cancelButton.style.right = '-5px';
-    cancelButton.style.margin = '10px';
-    cancelButton.style.color = '#aaa';
-    cancelButton.style.backgroundColor = '#333';
-    cancelButton.style.border = 'none';
-    cancelButton.style.borderRadius = '50%';
-    cancelButton.style.outline = 'none';
-    cancelButton.style.textAlign = 'center';
-    cancelButton.style.cursor = 'pointer';
+    var cancelHyperLinks = document.getElementById("cancelButton");
+    cancelHyperLinks.innerText = 'X';
+    cancelHyperLinks.style.position = 'fixed';
+    cancelHyperLinks.style.width = '30px';
+    cancelHyperLinks.style.height = '30px';
+    cancelHyperLinks.style.fontSize = '20px'; 
+    cancelHyperLinks.style.top = '-5px';
+    cancelHyperLinks.style.right = '-5px';
+    cancelHyperLinks.style.margin = '10px';
+    cancelHyperLinks.style.color = '#aaa';
+    cancelHyperLinks.style.backgroundColor = '#333';
+    cancelHyperLinks.style.border = 'none';
+    cancelHyperLinks.style.borderRadius = '50%';
+    cancelHyperLinks.style.outline = 'none';
+    cancelHyperLinks.style.textAlign = 'center';
+    cancelHyperLinks.style.cursor = 'pointer';
 
-    cancelButton.addEventListener('mouseover', function() {
-        cancelButton.style.backgroundColor = '#444';
+    cancelHyperLinks.addEventListener('mouseover', function() {
+        cancelHyperLinks.style.backgroundColor = '#444';
     });
 
-    cancelButton.addEventListener('mouseout', function() {
-        cancelButton.style.backgroundColor = '#333';
+    cancelHyperLinks.addEventListener('mouseout', function() {
+        cancelHyperLinks.style.backgroundColor = '#333';
     });
 
     var copier = document.createElement('button');
@@ -912,7 +912,7 @@ link.appendChild(linkText);`;
     document.body.appendChild(container);
     document.body.appendChild(invis);
 
-    contentContainer.appendChild(cancelButton);
+    contentContainer.appendChild(cancelHyperLinks);
     contentContainer.appendChild(linkContainer);
     contentContainer.appendChild(otherButton);
     contentContainer.appendChild(copier);
