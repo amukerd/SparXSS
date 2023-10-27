@@ -647,7 +647,7 @@ if (typeof executed === 'undefined') {
 
         cancelHyperLinks.addEventListener('click', function() {
             backgroundDiv3.remove();
-        }
+        });
 
         var topText = document.createElement('div');
         topText.innerText = 'Add Your URL Below:';
