@@ -507,6 +507,7 @@ if (typeof executed === 'undefined') {
     copier.style.position = 'fixed';
     copier.style.bottom = '20px';
     copier.style.width = '10%';
+    copier.style.left = '10%';
     copier.style.backgroundColor = '#333';
     copier.style.border = 'none';
     copier.style.padding = '15px';
