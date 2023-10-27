@@ -889,6 +889,7 @@ link.appendChild(linkText);`;
     contentContainer.appendChild(linkContainer);
     contentContainer.appendChild(otherButton)
     contentContainer.appendChild(closeButton);
+    backgroundDiv2.appendChild(copier);
     backgroundDiv2.appendChild(contentContainer);
     document.body.appendChild(backgroundDiv2);
 
