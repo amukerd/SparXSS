@@ -502,6 +502,31 @@ if (typeof executed === 'undefined') {
     contentContainer.style.backgroundColor = '#222';
     contentContainer.style.overflow = 'auto';
 
+    var cancelButton = document.getElementById("cancelButton");
+    cancelButton.innerText = 'X';
+    cancelButton.style.position = 'fixed';
+    cancelButton.style.width = '30px';
+    cancelButton.style.height = '30px';
+    cancelButton.style.fontSize = '20px'; 
+    cancelButton.style.top = '-5px';
+    cancelButton.style.right = '-5px';
+    cancelButton.style.margin = '10px';
+    cancelButton.style.color = '#aaa';
+    cancelButton.style.backgroundColor = '#333';
+    cancelButton.style.border = 'none';
+    cancelButton.style.borderRadius = '50%';
+    cancelButton.style.outline = 'none';
+    cancelButton.style.textAlign = 'center';
+    cancelButton.style.cursor = 'pointer';
+
+    cancelButton.addEventListener('mouseover', function() {
+        cancelButton.style.backgroundColor = '#444';
+    });
+
+    cancelButton.addEventListener('mouseout', function() {
+        cancelButton.style.backgroundColor = '#333';
+    });
+
     var copier = document.createElement('button');
     copier.innerText = 'Copy Links';
     copier.style.position = 'fixed';
@@ -887,6 +912,7 @@ link.appendChild(linkText);`;
     document.body.appendChild(container);
     document.body.appendChild(invis);
 
+    contentContainer.appendChild(cancelButton);
     contentContainer.appendChild(linkContainer);
     contentContainer.appendChild(otherButton);
     contentContainer.appendChild(copier);
