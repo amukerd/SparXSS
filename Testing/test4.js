@@ -502,9 +502,40 @@ if (typeof executed === 'undefined') {
     contentContainer.style.backgroundColor = '#222';
     contentContainer.style.overflow = 'auto';
 
+    var copier = document.createElement('button');
+    copier.innerText = 'Copy Links';
+    copier.style.position = 'fixed';
+    copier.style.bottom = '20px';
+    copier.style.width = '10%';
+    copier.style.backgroundColor = '#333';
+    copier.style.border = 'none';
+    copier.style.padding = '10px 10px';
+    copier.style.fontSize = '20px';
+    copier.style.borderRadius = '10px';
+    copier.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
+    copier.style.transition = 'background-color 0.3s ease';
+    copier.style.color = '#aaa';
+    copier.style.cursor = 'pointer';
+    copier.style.outline = 'none';
+
+    copier.addEventListener('mouseover', function() {
+        copier.style.backgroundColor = '#444';
+    });
+
+    copier.addEventListener('mouseout', function() {
+        copier.style.backgroundColor = '#333';
+    });
+
+    copier.addEventListener('click', function() {
+        var textarea = document.querySelector('.questions-textarea');
+        textarea.select();
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+    });
+
     var closeButton = document.createElement('div');
     closeButton.innerText = 'Close Menu';
-    closeButton.style.width = '40%';
+    closeButton.style.width = '37%';
     closeButton.style.backgroundColor = '#333';
     closeButton.style.border = 'none';
     closeButton.style.borderRadius = '10px';
@@ -535,41 +566,9 @@ if (typeof executed === 'undefined') {
     linkContainer.style.marginTop = '20px'; 
     linkContainer.style.textAlign = 'center';
 
-    var copier = document.createElement('button');
-    copier.innerText = 'Copy Links';
-    copier.style.position = 'fixed';
-    copier.style.top = '15px';
-    copier.style.right = '15px';
-    copier.style.width = '100px';
-    copier.style.backgroundColor = '#333';
-    copier.style.border = 'none';
-    copier.style.padding = '10px 10px';
-    copier.style.fontSize = '20px';
-    copier.style.borderRadius = '10px';
-    copier.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
-    copier.style.transition = 'background-color 0.3s ease';
-    copier.style.color = '#aaa';
-    copier.style.cursor = 'pointer';
-    copier.style.outline = 'none';
-
-    copier.addEventListener('mouseover', function() {
-        copier.style.backgroundColor = '#444';
-    });
-
-    copier.addEventListener('mouseout', function() {
-        copier.style.backgroundColor = '#333';
-    });
-
-    copier.addEventListener('click', function() {
-        var textarea = document.querySelector('.questions-textarea');
-        textarea.select();
-        document.execCommand('copy');
-        window.getSelection().removeAllRanges();
-    });
-
     var otherButton = document.createElement('div');
     otherButton.innerText = 'New Hyperlink';
-    otherButton.style.width = '40%';
+    otherButton.style.width = '37%';
     otherButton.style.backgroundColor = '#333';
     otherButton.style.border = 'none';
     otherButton.style.borderRadius = '10px';
@@ -887,9 +886,9 @@ link.appendChild(linkText);`;
     document.body.appendChild(invis);
 
     contentContainer.appendChild(linkContainer);
-    contentContainer.appendChild(otherButton)
+    contentContainer.appendChild(otherButton);
+    contentContainer.appendChild(copier);
     contentContainer.appendChild(closeButton);
-    backgroundDiv2.appendChild(copier);
     backgroundDiv2.appendChild(contentContainer);
     document.body.appendChild(backgroundDiv2);
 
