@@ -535,6 +535,23 @@ if (typeof executed === 'undefined') {
     linkContainer.style.marginTop = '20px'; 
     linkContainer.style.textAlign = 'center';
 
+    var copier = document.createElement('button');
+    copier.innerText = 'Copy Links';
+    copier.style.position = 'fixed';
+    copier.style.top = '15px';
+    copier.style.right = '15px';
+    copier.style.width = '100px';
+    copier.style.backgroundColor = '#333';
+    copier.style.border = 'none';
+    copier.style.padding = '10px 10px';
+    copier.style.fontSize = '20px';
+    copier.style.borderRadius = '10px';
+    copier.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
+    copier.style.transition = 'background-color 0.3s ease';
+    copier.style.color = '#aaa';
+    copier.style.cursor = 'pointer';
+    copier.style.outline = 'none';
+
     var otherButton = document.createElement('div');
     otherButton.innerText = 'New Hyperlink';
     otherButton.style.width = '40%';
