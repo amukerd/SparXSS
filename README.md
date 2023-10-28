@@ -13,6 +13,4 @@ Or Download The SparXSS.spklab File And Select 'Open Saved Experiment' When You 
   (currently working, may be changed in the future- change the link from /sparxss.js to /Testing/test4.js to use)
 - May add a tabbing feature to the javascript, but this is not a final decision as there is not too much of a point
 
-## Changelog
-
-Check [Changelog](https://github.com/Amukerd/SparXSS/blob/main/Changelog.md)
+## [Changelog](https://github.com/Amukerd/SparXSS/blob/main/Changelog.md)
