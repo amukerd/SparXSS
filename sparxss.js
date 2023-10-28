@@ -1,4 +1,4 @@
-// so it executes once
+// so it executes once 
 if (typeof executed === 'undefined') {
     executed = true;
 
