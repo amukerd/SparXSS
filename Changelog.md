@@ -1,3 +1,6 @@
+## 10/28/2023
+- I did in fact find a way to save the textbox .value with manually clicking it, so that's a good thing
+
 ## 10/27/2023
 - Added a third button in the hyperlinks menu that lets you copy the text in the textbox, so you can keep adding links incase you either dont want to export the file, or want to keep adding links in the future<br>
   If you do hit the copy button, all you have to do is paste the stuff copied to your clipboard in the textbox when reopening the app
