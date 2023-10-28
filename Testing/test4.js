@@ -565,9 +565,7 @@ if (typeof executed === 'undefined') {
 
         var textarea = document.querySelector('.questions-textarea');
         textarea.select();
-        setTimeout(function() {
-            window.getSelection().removeAllRanges();
-        }, 100);
+        window.getSelection().removeAllRanges();
     });
 
     var linkContainer = document.createElement('div');
