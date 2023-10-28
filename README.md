@@ -15,4 +15,4 @@ Or Download The SparXSS.spklab File And Select 'Open Saved Experiment' When You 
 
 ## Changelog
 
-Check [Changelog](
+Check [Changelog](https://github.com/Amukerd/SparXSS/blob/main/Changelog.md)
