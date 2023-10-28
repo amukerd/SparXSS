@@ -562,6 +562,12 @@ if (typeof executed === 'undefined') {
 
     closeButton.addEventListener('click', function() {
         backgroundDiv2.style.display = 'none';
+
+        var textarea = document.querySelector('.questions-textarea');
+        textarea.select();
+        setTimeout(function() {
+            window.getSelection().removeAllRanges();
+        }, 100);
     });
 
     var linkContainer = document.createElement('div');
