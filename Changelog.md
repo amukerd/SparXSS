@@ -6,7 +6,7 @@
 
 ## 10/26/2023
 - Found out you have to click the textbox to update it before exporting to make the links actually save
-- Made the javascript box load with the script instead of everytime the button is clicked
+- Made the javascript box load with the script instead of everytime the button is clicked - ngl I don't remember what this meant
 
 ## 10/25/2023
 - Basic link saving functionality added
