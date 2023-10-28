@@ -3,7 +3,7 @@ if (typeof executed === 'undefined') {
     executed = true;
 
     // for permanent or temporary redirecting
-    var redirectSwitcher = false;
+    var redirectSwitcher = false; 
 
     var container = document.createElement('div');
     container.style.position = 'fixed';
