@@ -26,8 +26,8 @@ if (typeof executed === 'undefined') {
     var toggler = document.createElement('button');
     toggler.innerText = 'Close';
     toggler.style.position = 'fixed';
-    toggler.style.top = '15px';
-    toggler.style.left = '15px';
+    toggler.style.top = '10px';
+    toggler.style.left = '10px';
     toggler.style.width = '100px';
     toggler.style.backgroundColor = '#333';
     toggler.style.border = 'none';
