@@ -397,7 +397,7 @@ if (typeof executed === 'undefined') {
             eval(jsCode);
         } catch (error) {
             executeButton.innerText = 'Error: Execution Failed';
-
+            console.log(error)
             setTimeout(function() {
                 executeButton.innerText = 'Execute';
             }, 2000);
