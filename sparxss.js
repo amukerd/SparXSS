@@ -286,8 +286,8 @@ if (typeof executed === 'undefined') {
     contentContainer.style.backgroundColor = '#222';
 
     var largeTextBox = document.createElement('textarea');
-    largeTextBox.style.width = '95%';
-    largeTextBox.style.height = '400px';
+    largeTextBox.style.width = '100%';
+    largeTextBox.style.height = '86%';
     largeTextBox.style.fontSize = '18px';
     largeTextBox.style.color = '#fff';
     largeTextBox.style.backgroundColor = '#333';
@@ -838,6 +838,39 @@ if (typeof executed === 'undefined') {
                 linkText.style.textAlign = 'center';
                 
                 link.appendChild(linkText);
+
+                var deleteLink = document.createElement('button');
+                deleteLink.innerText = 'X';
+                deleteLink.style.position = 'fixed';
+                deleteLink.style.width = '30px';
+                deleteLink.style.height = '30px';
+                deleteLink.style.fontSize = '20px'; 
+                deleteLink.style.top = '-5px';
+                deleteLink.style.right = '-5px';
+                deleteLink.style.margin = '10px';
+                deleteLink.style.color = '#aaa';
+                deleteLink.style.backgroundColor = '#333';
+                deleteLink.style.border = 'none';
+                deleteLink.style.borderRadius = '50%';
+                deleteLink.style.outline = 'none';
+                deleteLink.style.textAlign = 'center';
+                deleteLink.style.cursor = 'pointer';
+                deleteLink.style.fontWeight = 'bold';
+                deleteLink.style.transition = 'background-color 0.3s ease';
+            
+                deleteLink.addEventListener('mouseover', function() {
+                    deleteLink.style.backgroundColor = '#444';
+                });
+            
+                deleteLink.addEventListener('mouseout', function() {
+                    deleteLink.style.backgroundColor = '#333';
+                });
+        
+                deleteLink.addEventListener('click', function() {
+                    backgroundDiv3.remove();
+                });
+
+                link.appendChild(deleteLink)
 
                 var codeSnippet = `var link = document.createElement('button');
 link.style.width = '25%';
