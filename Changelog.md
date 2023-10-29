@@ -1,5 +1,6 @@
 ## 10/29/2023
 - When the javascript fails to execute it is logged to the console, so you can see it in Eruda
+- Also deleted the Testing folder because I don't really need to test anything anymore
 
 ## 10/28/2023
 - I did in fact find a way to save the textbox .value with manually clicking it, so that's a good thing
