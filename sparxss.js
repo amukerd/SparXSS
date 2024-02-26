@@ -773,23 +773,23 @@ if (typeof executed === 'undefined') {
                 return response.text();
             })
             .then(function(data) {
-                var match = data.match(/<link.*?rel=["']icon["'].*?href=["'](.*?)["']/i);
-                if (match) {
-                    faviconURL = match[1];
-                    console.log("Website URL: " + websiteURL)
-                    console.log("Favicon Path: " + faviconURL)
-                    if (faviconURL.startsWith('/') && !websiteURL.endsWith('/')) {
-                        faviconURL = websiteURL + faviconURL;
-                    } else if (faviconURL.startsWith('http')) {
-                        faviconURL = faviconURL;
-                    } else {
-                        faviconURL = websiteURL + '/' + faviconURL;
-                    }
-                } else {
-                    faviconURL = 'https://www.google.com/s2/favicons?domain=' + userURL;
-                }
+                //var match = data.match(/<link.*?rel=["']icon["'].*?href=["'](.*?)["']/i);
+                //if (match) {
+                //    faviconURL = match[1];
+                //    console.log("Website URL: " + websiteURL)
+                //    console.log("Favicon Path: " + faviconURL)
+                //    if (faviconURL.startsWith('/') && !websiteURL.endsWith('/')) {
+                //        faviconURL = websiteURL + faviconURL;
+                //    } else if (faviconURL.startsWith('http')) {
+                //        faviconURL = faviconURL;
+                //    } else {
+                //        faviconURL = websiteURL + '/' + faviconURL;
+                //    }
+                //} else {
+                //    faviconURL = 'https://www.google.com/s2/favicons?domain=' + userURL;
+                //}
 
-                console.log("Final Favicon URL: " + faviconURL)
+                //console.log("Final Favicon URL: " + faviconURL)
     
                 var link = document.createElement('button');
                 link.style.width = '25%';
@@ -828,7 +828,7 @@ if (typeof executed === 'undefined') {
                 imgDiv.style.width = '150px';
                 imgDiv.style.height = '150px';
                 imgDiv.style.textAlign = 'center';
-                imgDiv.src = faviconURL;
+                // imgDiv.src = faviconURL;
                 
                 link.appendChild(imgDiv);
     
