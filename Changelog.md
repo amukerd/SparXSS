@@ -1,3 +1,8 @@
+## 2/26/2024
+- New method means custom links does not work anymore have to get that fixed
+- Other than that it does not seem like anything else is broken, although it might be impossible to make the links stay now because of how many different sparklabs there are and how many different div id's/names there could possibly be
+- So the removal of the links staying when you export is now probably impossible/ion wanna develop it anymore
+
 ## 10/29/2023
 - When the javascript fails to execute it is logged to the console, so you can see it in Eruda
 - Also deleted the Testing folder because I don't really need to test anything anymore
