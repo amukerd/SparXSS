@@ -1,5 +1,6 @@
 ## 5/14/2024
 - The converted website is finished: [SparXSS.Pages.Dev](https://sparxss.pages.dev)
+- Because of the new SPARKvue update, the .spklabs do not work anymore either
 
 ## 5/13/2024
 - The patch from 2/26/2024 meant custom links could not work and they won't be able to work, so I will remove the custom links section of the code
