@@ -1,6 +1,9 @@
+## 5/14/2024
+- The converted website is finished: [SparXSS.Pages.Dev](https://sparxss.pages.dev)
+
 ## 5/13/2024
-- The patch from 2/26/2024 meant custom links could not work and they be able to work, so I will work on removing the custom links section of the code
-- A new patch has also came out meaning I am converting this from github to a website, so that it doesn't need a javascript execution from SPARKvue itself to run
+- The patch from 2/26/2024 meant custom links could not work and they won't be able to work, so I will remove the custom links section of the code
+- A new patch has also came out meaning I am converting this from github to a website, so that it doesn't need javascript execution from SPARKvue itself to run
 
 ## 2/26/2024
 - New method means custom links does not work anymore have to get that fixed
