@@ -1,6 +1,6 @@
 ## A Script For Redirection And Custom Javascript Execution For The SPARKvue Chrome App XSS Vulnerability Found By ohonbob
 The full guide to access the vulnerability is in the Titanium Network Discord Server: <a target="_blank" href="http://discord.gg/unblock">discord.gg/unblock</a>
-[yeetus](https://discord.gg/unblock)
+<a href="http://stackoverflow.com" target="_blank">Go</a>
 
 Run it using:
 ```
